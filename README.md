@@ -7,3 +7,8 @@ In this project you should be able to rank any instructor, the school has a rank
 
 
 Possibly have a login method for users to limit 1 ranking per instructor per user.
+
+mysql database
+sqlalchemy
+flask dynamic data (use atlas-AirBnb_clone_v3 web_flask directory)
+flask api (use atlas-AirBnb_clone_v3 api directory)
