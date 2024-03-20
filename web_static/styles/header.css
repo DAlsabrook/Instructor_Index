@@ -1,6 +1,12 @@
 .header {
     margin: 0px;
     height: 250px;
+    background-image: url("../images/blob.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    top: 0;
+    border: 1px solid white;
 }
 
 .nav_bar {
@@ -8,7 +14,7 @@
     flex-direction: row;
     justify-content: space-between;
     height: 40px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .nav_logo {
