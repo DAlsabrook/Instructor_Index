@@ -7,9 +7,12 @@
     <title>Instructor[Index]</title>
     <meta name="description" content="Rate your instructors">
     <!-- tab image\/ -->
-    <link rel="icon" type="image/png" href="images/">
+    <link rel="icon" href="images/icon.png" style="border-radius: 30px;">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href='styles/style.css'>
+    <!-- CSS style sheets -->
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/footer.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -18,48 +21,57 @@
 
     <!-- Header and nav bar for the home page -->
     <header class="header">
-        <div class="nav-bar">
+        <div class="nav_bar">
             <!-- Very top left logo -->
-            <div class="nav-logo">
-                <a href="#">
-                    <img src="images/" alt="Ins-Ind-logo" width="60" height="60">
-                </a>
+            <div class="nav_logo">
+                <h3>I</h3>
+                <h3>[i]</h3>
+            </div>
                 <!-- Navigation bar fixed to top -->
-                <div class="nav_links">
-                    <button class="nav-link-log-in">Log In</button>
-                    <button class="nav-link-sign-up">Sign Up</button>
-                </div>
+            <div class="nav_links">
+                <button class="nav-link-log-in">Log In</button>
+                <button class="nav-link-sign-up">Sign Up</button>
             </div>
         </div>
     </header>
 
     <!-- Main body for the home page -->
     <main class="main">
+
+        <!-- Section to search schools -->
         <section class="search_section">
-            <h1>Place holder for ins-ind logo</h1>
-            <h1>Enter your <b>school</b> to get started</h1>
+            <div class="index_logo">
+                <h1 class="ins">I n s t r u c t o r</h1>
+                <h1 class="ind">[I n d e x]</h1>
+            </div>
+            <h1>Enter your school to get started</h1>
             <form action="/search" method="GET">
                 <input type="search" id="search" name="query" placeholder="School name">
-                <button type="submit">Search</button>
             </form>
         </section>
+
+        <!-- Section for sign ups -->
         <section class="sign_up_section">
-            <h1>Join the Index Family</h1>
-            <h2>Love Instructor Index? Let's make it official.</h2>
-            <div>
-                <img src="" alt="Thumbs_up-Thumbs_down">
-                <h2>Vote on instructors</h2>
+            <div class="sign_up_title">
+                <h1>Join the Index Family</h1>
+                <h2>Love Instructor Index? Let's make it official.</h2>
             </div>
-            <div>
-                <img src="" alt="Anonymous">
-                <h2>Your ratings are always anonymous</h2>
+            <div class="sign_up_content">
+                <div class="content_box">
+                    <img src="./images/vote.png" alt="Thumbs_up-Thumbs_down">
+                    <h2>Vote on instructors</h2>
+                </div>
+                <div class="content_box">
+                    <img src="./images/anon.png" alt="Anonymous">
+                    <h2>Your ratings are always anonymous</h2>
+                </div>
             </div>
-            <div><button>Sign up now!</button></div>
+            <button>Sign up now!</button>
         </section>
     </main>
 
     <!-- Footer for the home page -->
-    <footer>
+    <footer class="footer">
         <section class="footer-links">
             <button>Help</button>
             <button>About</button>
@@ -76,7 +88,7 @@
         </section>
         <section class="footer-copyright">
             <a href="#">
-                <img src="images/" alt="Ins-Ind-logo" width="60" height="60">
+                <img src="images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
             </a>
             <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
         </section>

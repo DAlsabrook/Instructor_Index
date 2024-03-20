@@ -1,0 +1,137 @@
+.body {
+    margin: 0px;
+}
+
+.main {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.search_section {
+    background-image: url('../images/books.png');
+    background-size: auto;
+    background-position: bottom;
+    background-blend-mode:color-burn;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+input[type="search"] {
+    text-align: center;
+}
+
+input[type="search"]::placeholder {
+    text-align: center;
+}
+
+input[type="search"]:focus::placeholder {
+    color: transparent;
+}
+
+.index_logo {
+    display: flex;
+}
+
+.index_logo .ins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 40px;
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.index_logo .ind {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    height: 40px;
+    padding: 5px;
+    padding-right: 20px;
+}
+.search_section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+#search,
+button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 50px;
+}
+
+#search,
+input {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    height: 60px;
+    width: 550px;
+    font-size: 20px;
+}
+
+.sign_up_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 120px
+}
+
+.sign_up_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+    margin-top: 40px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.sign_up_title h1 {
+    font-weight: 600;
+}
+
+.sign_up_title h2 {
+    font-weight: 400;
+    margin-top: -20px;
+}
+
+.sign_up_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 80%;
+}
+
+.content_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.sign_up_section button {
+    border: 1px solid blueviolet;
+    background-color: black;
+    color: white;
+    align-items: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 50px;
+}
