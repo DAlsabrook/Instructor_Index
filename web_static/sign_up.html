@@ -13,22 +13,21 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/body.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/index_main.css">
+    <link rel="stylesheet" href="styles/sign_up.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body class="body">
-
-    <!-- Header and nav bar for the home page -->
     <header class="header">
-        <div class="nav_bar">
-            <!-- Very top left logo -->
+        <div class="nav-bar">
             <div class="nav_logo">
                 <h3>I</h3>
                 <h3>[i]</h3>
             </div>
-                <!-- Navigation bar fixed to top -->
+            <select id="options" name="options">
+                <option value="option1">Instructors</option>
+                <option value="option1">Schools</option>
+            </select>
             <div class="nav_links">
                 <button class="nav-link-log-in">Log In</button>
                 <button class="nav-link-sign-up">Sign Up</button>
@@ -36,42 +35,24 @@
         </div>
     </header>
 
-    <!-- Main body for the home page -->
     <main class="main">
-
-        <!-- Section to search schools -->
-        <section class="search_section">
-            <div class="index_logo">
-                <h1 class="ins">I n s t r u c t o r</h1>
-                <h1 class="ind">[I n d e x]</h1>
-            </div>
-            <h1>Enter your school to get started</h1>
-            <form action="/search" method="GET">
-                <input type="search" id="search" name="query" placeholder="School name">
-            </form>
-        </section>
-
-        <!-- Section for sign ups -->
         <section class="sign_up_section">
-            <div class="sign_up_title">
-                <h1>Join the Index Family</h1>
-                <h2>Love Instructor Index? Let's make it official.</h2>
+            <div class="sign_up_box">
+                <form action="/signup" method="post">
+                    <div>
+                        <input type="text" id="sign_up_bars" name="username" placeholder="Username" required>
+                    </div>
+                    <div>
+                        <input type="password" id="sign_up_bars" name="password" placeholder="Password" required>
+                    </div>
+                    <div>
+                        <button type="submit">Create</button>
+                    </div>
+                </form>
             </div>
-            <div class="sign_up_content">
-                <div class="content_box">
-                    <img src="./images/vote.png" alt="Thumbs_up-Thumbs_down">
-                    <h2>Vote on instructors</h2>
-                </div>
-                <div class="content_box">
-                    <img src="./images/anon.png" alt="Anonymous">
-                    <h2>Your ratings are always anonymous</h2>
-                </div>
-            </div>
-            <button>Sign up now!</button>
         </section>
     </main>
 
-    <!-- Footer for the home page -->
     <footer class="footer">
         <section class="footer-links">
             <button>Help</button>

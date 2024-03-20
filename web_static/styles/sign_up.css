@@ -1,0 +1,28 @@
+input[id="sign_up_bars"] {
+    text-align: center;
+    border-radius: 50px;
+    height: 40px;
+    width: 300px;
+}
+
+input[id="sign_up_bars"]::placeholder {
+    text-align: center;
+}
+
+input[id="sign_up_bars"]:focus::placeholder {
+    color: transparent;
+}
+
+.sign_up_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form[action="/signup"][method="post"] div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
