@@ -1,5 +1,13 @@
 .body {
     margin: 0px;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    overscroll-behavior: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .main {

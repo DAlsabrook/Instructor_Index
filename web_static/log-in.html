@@ -10,72 +10,48 @@
     <link rel="icon" href="images/icon.png" style="border-radius: 30px;">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
     <!-- CSS style sheets -->
-    <link rel="stylesheet" href="styles/index_header.css">
+    <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/body.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/index_main.css">
+    <link rel="stylesheet" href="styles/log-in.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body class="body">
-
-    <!-- Header and nav bar for the home page -->
     <header class="header">
         <div class="nav_bar">
-            <!-- Very top left logo -->
             <div class="nav_logo">
-                <button id="home">I[i]</button>
+                <button id="nav-home">I[i]</button>
+                <button id="nav-schools">[Schools]</button>
+                <button id="nav-instructors">[Instructors]</button>
             </div>
-                <!-- Navigation bar fixed to top -->
+            <!-- Navigation bar fixed to top -->
             <div class="nav_links">
                 <button id="nav-link-log-in">Log in</button>
             </div>
         </div>
     </header>
 
-    <!-- Main body for the home page -->
+
     <main class="main">
-
-        <!-- Section to search schools -->
-        <section class="search_section">
-            <div class="index_logo">
-                <h1 class="ins">I n s t r u c t o r</h1>
-                <h1 class="ind">[I n d e x]</h1>
-            </div>
-            <h1>Enter your school to get started</h1>
-            <form action="/search" method="GET">
-                <input type="search" id="search" name="query" placeholder="School name">
-            </form>
-            <div>
-                <h2>Visit:
-                <button id="nav-schools">Schools</button>
-                <button id="nav-instructors">Instructors</button>
-                </h2>
-            </div>
-        </section>
-
-        <!-- Section for sign ups -->
         <section class="sign_up_section">
-            <div class="sign_up_title">
-                <h1>Join the Index Family</h1>
-                <h2>Love Instructor Index? Let's make it official.</h2>
+            <div class="sign_up_box">
+                <form action="/signup" method="post">
+                    <div>
+                        <input type="text" id="sign_up_bars" name="username" placeholder="Username" required>
+                    </div>
+                    <div>
+                        <input type="password" id="sign_up_bars" name="password" placeholder="Password" required>
+                    </div>
+                    <div>
+                        <button type="submit">Log in</button>
+                        <button id="sign_up">Create new account</button>
+                    </div>
+                </form>
             </div>
-            <div class="sign_up_content">
-                <div class="content_box">
-                    <img src="./images/vote.png" alt="Thumbs_up-Thumbs_down">
-                    <h2>Vote on instructors</h2>
-                </div>
-                <div class="content_box">
-                    <img src="./images/anon.png" alt="Anonymous">
-                    <h2>Your ratings are always anonymous</h2>
-                </div>
-            </div>
-            <button id="sign_up">Sign up now!</button>
         </section>
     </main>
 
-    <!-- Footer for the home page -->
     <footer class="footer">
         <section class="footer-links">
             <button>Help</button>
@@ -99,12 +75,12 @@
         </section>
     </footer>
     <script>
-        document.getElementById('nav-link-log-in').addEventListener('click', function () {
-            window.location.href = './log-in.html';
+        document.getElementById('nav-link-sign-up').addEventListener('click', function () {
+            window.location.href = './sign_up.html';
         });
     </script>
     <script>
-        document.getElementById('home').addEventListener('click', function () {
+        document.getElementById('nav-home').addEventListener('click', function () {
             window.location.href = './index.html';
         });
     </script>

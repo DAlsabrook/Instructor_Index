@@ -72,12 +72,26 @@ input {
     font-size: 20px;
 }
 
+#nav-schools {
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    border: 1px solid grey;
+}
+
+#nav-instructors {
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+    border: 1px solid grey;
+}
+
 .sign_up_section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 120px
+    padding-bottom: 280px
 }
 
 .sign_up_title {

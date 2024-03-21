@@ -1,49 +1,56 @@
 .header {
-    margin: 0px;
-    height: 250px;
-    background-image: url("../images/blob.svg");
-    background-position: right center;
-    background-repeat: no-repeat;
-    background-size: auto auto;
-    top: 0;
-    border: 1px solid white;
+    width: 100%;
+    background-color: black;
 }
 
 .nav_bar {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    height: 40px;
-    margin-top: 10px;
-}
-
-.nav_logo {
-    margin-left: 40px;
-    margin-top: 10px;
-    display: flex;
-    font-size: larger;
-}
-
-.nav_links {
     margin-right: 40px;
-    margin-top: 20px;
+    margin-left: 40px;
 }
 
-.nav-link-log-in {
-    border: none;
-    background-color: transparent;
-    color: black;
-    padding: auto;
-    text-align: center;
-    margin-right: 10px;
-}
-
-.nav-link-sign-up {
-    border: none;
+#nav-home {
     background-color: black;
     color: white;
-    padding: auto;
-    height: 40px;
-    width: 120px;
-    border-radius: 50px;
+    border: none;
+    font-size: 20px;
+}
+
+#nav-schools {
+    border: none;
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
+    margin-left: 40px;
+}
+
+#nav-instructors {
+    border: none;
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
+    margin-left: 40px;
+}
+
+.nav_links button {
+    margin: 10px;
+}
+
+#nav-link-log-in {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100px;
 }

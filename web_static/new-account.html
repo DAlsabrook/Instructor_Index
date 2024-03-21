@@ -13,40 +13,48 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/body.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/sign_up.css">
+    <link rel="stylesheet" href="styles/new-account.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body class="body">
     <header class="header">
-        <div class="nav-bar">
+        <div class="nav_bar">
             <div class="nav_logo">
-                <h3>I</h3>
-                <h3>[i]</h3>
+                <button id="nav-home">I[i]</button>
+                <button id="nav-schools">[Schools]</button>
+                <button id="nav-instructors">[Instructors]</button>
             </div>
-            <select id="options" name="options">
-                <option value="option1">Instructors</option>
-                <option value="option1">Schools</option>
-            </select>
+            <!-- Navigation bar fixed to top -->
             <div class="nav_links">
-                <button class="nav-link-log-in">Log In</button>
-                <button class="nav-link-sign-up">Sign Up</button>
+                <button id="nav-link-log-in">Log in</button>
             </div>
         </div>
     </header>
 
+
     <main class="main">
-        <section class="sign_up_section">
-            <div class="sign_up_box">
+        <section class="new_acc_section">
+            <div class="new_acc_box">
                 <form action="/signup" method="post">
                     <div>
-                        <input type="text" id="sign_up_bars" name="username" placeholder="Username" required>
+                        <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+                    </div>
+                    <div>
+                        <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+                    </div>
+                    <div>
+                        <input type="text" id="cohort" name="cohort" placeholder="Cohort" required>
+                    </div>
+                    <div>
+                        <input type="text" id="email" name="email" placeholder="Email" required>
                     </div>
                     <div>
                         <input type="password" id="sign_up_bars" name="password" placeholder="Password" required>
                     </div>
                     <div>
-                        <button type="submit">Create</button>
+                        <button type="submit">Sumbit</button>
                     </div>
                 </form>
             </div>
@@ -75,6 +83,26 @@
             <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
         </section>
     </footer>
+    <script>
+        document.getElementById('nav-link-sign-up').addEventListener('click', function () {
+            window.location.href = './sign_up.html';
+        });
+    </script>
+    <script>
+        document.getElementById('nav-home').addEventListener('click', function () {
+            window.location.href = './index.html';
+        });
+    </script>
+    <script>
+        document.getElementById('nav-schools').addEventListener('click', function () {
+            window.location.href = './school.html';
+        });
+    </script>
+    <script>
+        document.getElementById('nav-instructors').addEventListener('click', function () {
+            window.location.href = './instructor.html';
+        });
+    </script>
 </body>
 
 </html>

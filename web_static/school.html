@@ -7,31 +7,29 @@
     <title>Instructor[Index]</title>
     <meta name="description" content="Rate your instructors">
     <!-- tab image\/ -->
-    <link rel="icon" type="image/png" href="images/">
+    <link rel="icon" href="images/icon.png" style="border-radius: 30px;">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href='styles/style.css'>
+    <!-- CSS style sheets -->
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/body.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/sign_up.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="body">
-
-    <!-- Header and nav bar for the home page -->
     <header class="header">
-        <!-- Navigation bar fixed to top -->
-        <div class="nav-bar">
-            <!-- Very top left logo -->
-            <a href="#">
-                <img src="images/" alt="Ins-Ind-logo" width="60" height="60">
-            </a>
-            <!-- Drop down to change webpage -->
-            <select id="options" name="options">
-                <option value="option1">Instructors</option>
-                <option value="option1">Schools</option>
-            </select>
-            <!-- login and signup buttons -->
-            <button class="nav-link-log-in">Log In</button>
-            <button class="nav-link-sign-up">Sign Up</button>
+        <div class="nav_bar">
+            <div class="nav_logo">
+                <button id="nav-home">I[i]</button>
+                <button id="nav-schools">[Schools]</button>
+                <button id="nav-instructors">[Instructors]</button>
+            </div>
+            <!-- Navigation bar fixed to top -->
+            <div class="nav_links">
+                <button id="nav-link-log-in">Log in</button>
+            </div>
         </div>
     </header>
 
@@ -77,30 +75,48 @@
             </div>
         </section>
     </main>
-
-    <!-- Footer for the home page -->
-    <footer>
-        <section class="footer-links">
-            <button>Help</button>
-            <button>About</button>
-            <button>Contact us</button>
-            <button>Career</button>
-        </section>
-        <section class="footer-socials">
-            <button class="hero_button">
-                <div href="https://www.linkedin.com/in/david-alsabrook/" class="fa fa-solid fa-linkedin fa-lg"></div>
-            </button>
-            <button class="hero_button">
-                <div href="https://github.com/DAlsabrook" class="fa fa-solid fa-github fa-lg"></div>
-            </button>
-        </section>
-        <section class="footer-copyright">
-            <a href="#">
-                <img src="images/" alt="Ins-Ind-logo" width="60" height="60">
-            </a>
-            <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
-        </section>
-    </footer>
+<footer class="footer">
+    <section class="footer-links">
+        <button>Help</button>
+        <button>About</button>
+        <button>Contact us</button>
+        <button>Career</button>
+    </section>
+    <section class="footer-socials">
+        <button class="hero_button">
+            <div href="https://www.linkedin.com/in/david-alsabrook/" class="fa fa-solid fa-linkedin fa-lg"></div>
+        </button>
+        <button class="hero_button">
+            <div href="https://github.com/DAlsabrook" class="fa fa-solid fa-github fa-lg"></div>
+        </button>
+    </section>
+    <section class="footer-copyright">
+        <a href="#">
+            <img src="images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
+        </a>
+        <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
+    </section>
+</footer>
+<script>
+    document.getElementById('nav-link-log-in').addEventListener('click', function () {
+        window.location.href = './log-in.html';
+    });
+</script>
+<script>
+    document.getElementById('nav-home').addEventListener('click', function () {
+        window.location.href = './index.html';
+    });
+</script>
+<script>
+    document.getElementById('nav-schools').addEventListener('click', function () {
+        window.location.href = './school.html';
+    });
+</script>
+<script>
+    document.getElementById('nav-instructors').addEventListener('click', function () {
+        window.location.href = './instructor.html';
+    });
+</script>
 </body>
 
 </html>

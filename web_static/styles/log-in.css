@@ -1,4 +1,9 @@
+.main {
+    padding-top: 150px;
+}
+
 input[id="sign_up_bars"] {
+    border: 1px solid black;
     text-align: center;
     border-radius: 50px;
     height: 40px;
