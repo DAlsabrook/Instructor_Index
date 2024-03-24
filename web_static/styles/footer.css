@@ -60,3 +60,24 @@
     font-weight: 100;
     margin-left: 20px;
 }
+
+a {
+    color: inherit;
+    /* Makes the link color the same as the surrounding text */
+    text-decoration: none;
+    /* Removes underline from the link */
+}
+
+a:visited {
+    color: inherit;
+    /* Keeps the link color the same even after it has been visited */
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    /* Keeps the link color the same when hovered, clicked, or focused */
+    text-decoration: none;
+    /* Ensures no decoration is added on hover, click, or focus */
+}
