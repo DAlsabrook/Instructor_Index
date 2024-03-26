@@ -6,14 +6,17 @@ Contains the class DBStorage
 from models.base_model import Base
 from models.instructor import Instructor
 from models.school import School
-from models.rating import Rating
+from models.rating import School_Rating, Instructor_Rating
 from models.user import User
 from os import getenv
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-classes = {"Instructor": Instructor, "School": School,
-           "Rating": Rating, "User": User}
+classes = {"Instructor": Instructor,
+           "School": School,
+           "School_Rating": School_Rating,
+           "Instructor_Rating": Instructor_Rating,
+           "User": User}
 
 
 class DBStorage:
@@ -23,19 +26,9 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
-        # I added default port to the hosthost (:3306)
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB))
-        if HBNB_ENV == "test":
-            Base.metadata.drop_all(self.__engine)
+        self.__engine = create_engine(
+            'mysql+mysqldb://admin:admin@localhost:3306/index_db'
+            )
 
     def all(self, cls=None):
         """query on the current database session"""
