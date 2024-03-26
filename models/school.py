@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+"""
+Contains the class School
+"""
+
+from models.base_model import BaseModel, Base
+import sqlalchemy
+from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy.orm import relationship
+
+
+class School(BaseModel, Base):
+    """Representation of a school"""
+    __tablename__ = 'schools'
+    name = Column(String(128), nullable=False)
+    instructors = relationship("Instructor", backref="school")
+    ratings = relationship("School_Rating", backref="school")
+
+    def __init__(self, *args):
+        """initializes city"""
+        super().__init__(*args)
