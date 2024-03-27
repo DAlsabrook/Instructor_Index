@@ -17,6 +17,11 @@ def print_tables():
         print("\t\tInstructors:")
         for instructor in school.instructors:
             print(f"\t\t\t{instructor.first_name} {instructor.last_name} - overall: {instructor.overall}")
+            print("\t\t\t\tApproachability\t\t Availability\t\t  Helpfulness")
+            for rating in instructor.ratings:
+                print(f"\t\t\t\t\t{rating.approachability}\
+                      {rating.availability}\
+                        {rating.helpfulness}")
         print()
 
 
