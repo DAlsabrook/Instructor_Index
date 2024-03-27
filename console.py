@@ -1,25 +1,23 @@
 #!/usr/bin/python3
 """ console """
-
 import cmd
-import models
-from models.instructor import Instructor
-from models.base_model import BaseModel
-from models.rating import School_Rating, Instructor_Rating
-from models.school import School
-from models.user import User
 import shlex  # for splitting the line along spaces except in double quotes
 
-classes = {"Instructor": Instructor,
+
+class HBNBCommand(cmd.Cmd):
+    """ HBNH console """
+    from models.instructor import Instructor
+    from models.base_model import BaseModel
+    from models.rating import School_Rating, Instructor_Rating
+    from models.school import School
+    from models.user import User
+
+    classes = {"Instructor": Instructor,
            "BaseModel": BaseModel,
            "School_Rating": School_Rating,
            "Instructor_Rating": Instructor_Rating,
            "School": School,
            "User": User}
-
-
-class HBNBCommand(cmd.Cmd):
-    """ HBNH console """
     prompt = '(hbnb) '
 
     def do_EOF(self, arg):
@@ -61,9 +59,9 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
             return False
-        if args[0] in classes:
+        if args[0] in HBNBCommand.classes:
             new_dict = self._key_value_parser(args[1:])
-            instance = classes[args[0]](**new_dict)
+            instance = HBNBCommand.classes[args[0]](**new_dict)
         else:
             print("** class doesn't exist **")
             return False
@@ -73,17 +71,20 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class and id"""
+        from models import storage
         args = shlex.split(arg)
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] in classes:
+        elif args[0] in HBNBCommand.classes:
             if len(args) > 1:
                 key = args[0] + "." + args[1]
-                if key in models.storage.all():
-                    models.storage.all().pop(key)
-                    models.storage.save()
-                else:
-                    print("** no instance found **")
+                for k, obj in storage.all().items():
+                    if k == key:
+                        storage.delete(obj)
+                        storage.save()
+                        print("Deleted")
+                    else:
+                        print("** no instance found **")
             else:
                 print("** instance id missing **")
         else:
@@ -91,12 +92,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints string representations of instances"""
+        from models import storage
         args = shlex.split(arg)
         obj_list = []
         if len(args) == 0:
-            obj_dict = models.storage.all()
-        elif args[0] in classes:
-            obj_dict = models.storage.all(classes[args[0]])
+            obj_dict = storage.all()
+        elif args[0] in HBNBCommand.classes:
+            obj_dict = storage.all(HBNBCommand.classes[args[0]])
         else:
             print("** class doesn't exist **")
             return False

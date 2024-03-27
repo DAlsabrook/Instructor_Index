@@ -18,6 +18,6 @@ class User(BaseModel, Base):
     user_name = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         """initializes city"""
-        super().__init__(*args)
+        super().__init__(*args, **kwargs)

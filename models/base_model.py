@@ -2,7 +2,6 @@
 """
 Contains class BaseModel
 """
-from models import storage
 from sqlalchemy import Column, String
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
@@ -14,9 +13,16 @@ class BaseModel:
     """The BaseModel class from which future classes will be derived"""
     id = Column(String(60), primary_key=True)
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         """Initialization of the base model"""
-        self.id = str(uuid.uuid4())
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    setattr(self, key, value)
+            if kwargs.get("id", None) is None:
+                self.id = str(uuid.uuid4())
+        else:
+            self.id = str(uuid.uuid4())
 
     def __str__(self):
         """String representation of the BaseModel class"""
@@ -25,6 +31,7 @@ class BaseModel:
 
     def save(self):
         """Saves current session to the database"""
+        from models import storage
         storage.new(self)
         storage.save()
 
@@ -38,4 +45,5 @@ class BaseModel:
 
     def delete(self):
         """delete the current instance from the storage"""
+        from models import storage
         storage.delete(self)

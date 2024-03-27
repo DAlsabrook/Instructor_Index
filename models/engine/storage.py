@@ -3,29 +3,25 @@
 Contains the class DBStorage
 """
 
-from models.base_model import Base
-from models.instructor import Instructor
-from models.school import School
-from models.rating import School_Rating, Instructor_Rating
-from models.user import User
-from os import getenv
-from sqlalchemy import create_engine, func
-from sqlalchemy.orm import scoped_session, sessionmaker
-
-classes = {"Instructor": Instructor,
-           "School": School,
-           "School_Rating": School_Rating,
-           "Instructor_Rating": Instructor_Rating,
-           "User": User}
-
 
 class DBStorage:
     """interaacts with the MySQL database"""
+    from models.instructor import Instructor
+    from models.school import School
+    from models.rating import School_Rating, Instructor_Rating
+    from models.user import User
+
+    classes = {"Instructor": Instructor,
+            "School": School,
+            "School_Rating": School_Rating,
+            "Instructor_Rating": Instructor_Rating,
+            "User": User}
     __engine = None
     __session = None
 
     def __init__(self):
         """Instantiate a DBStorage object"""
+        from sqlalchemy import create_engine
         self.__engine = create_engine(
             'mysql+mysqldb://admin:admin@localhost:3306/index_db'
             )
@@ -33,9 +29,9 @@ class DBStorage:
     def all(self, cls=None):
         """query on the current database session"""
         new_dict = {}
-        for clss in classes:
-            if cls is None or cls is classes[clss] or cls is clss:
-                objs = self.__session.query(classes[clss]).all()
+        for clss in DBStorage.classes:
+            if cls is None or cls is DBStorage.classes[clss] or cls is clss:
+                objs = self.__session.query(DBStorage.classes[clss]).all()
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
@@ -44,7 +40,7 @@ class DBStorage:
     def get(self, cls, id):
         """Get on object based on its class and id"""
         # Check if class is a valid class
-        if cls in classes.values():
+        if cls in DBStorage.classes.values():
             # Query to find if the class has an object with matching id
             obj = self.__session.query(cls).filter(cls.id == id).first()
             return obj
@@ -80,6 +76,8 @@ class DBStorage:
 
     def reload(self):
         """reloads data from the database"""
+        from sqlalchemy.orm import scoped_session, sessionmaker
+        from models.base_model import Base
         Base.metadata.create_all(self.__engine)
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)

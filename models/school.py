@@ -4,8 +4,7 @@ Contains the class School
 """
 
 from models.base_model import BaseModel, Base
-import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
 
@@ -16,6 +15,6 @@ class School(BaseModel, Base):
     instructors = relationship("Instructor", backref="school")
     ratings = relationship("School_Rating", backref="school")
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         """initializes city"""
-        super().__init__(*args)
+        super().__init__(*args, **kwargs)

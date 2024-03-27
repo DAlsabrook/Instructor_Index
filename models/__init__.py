@@ -2,6 +2,7 @@
 Initialize the engine
 """
 
-from engine.storage import DBStorage
+from .engine.storage import DBStorage
 
 storage = DBStorage()
+storage.reload()

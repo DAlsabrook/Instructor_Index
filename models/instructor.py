@@ -23,6 +23,6 @@ class Instructor(BaseModel, Base):
     # What school they teach at
     school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         """initializes city"""
-        super().__init__(*args)
+        super().__init__(*args, **kwargs)

@@ -30,10 +30,10 @@ class School_Rating(BaseModel, Base):
     social = Column(Integer, nullable=False)
     happiness = Column(Integer, nullable=False)
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         """initializes city"""
         # Get a UUID as primary key
-        super().__init__(*args)
+        super().__init__(*args, **kwargs)
 
 
 class Instructor_Rating(BaseModel, Base):
@@ -56,7 +56,7 @@ class Instructor_Rating(BaseModel, Base):
     availability = Column(Integer, nullable=False)
     helpfulness = Column(Integer, nullable=False)
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         """initializes city"""
         # Get a UUID as primary key
-        super().__init__(*args)
+        super().__init__(*args, **kwargs)
