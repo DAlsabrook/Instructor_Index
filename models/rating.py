@@ -14,11 +14,6 @@ class School_Rating(BaseModel, Base):
     """
     __tablename__ = 'school_ratings'
 
-    # overall need to be average of all other ratings figured out on instance
-    # creation. Make a method to caluculate and called on initialization.
-    # Also should be a float?
-    # overall = Column(String(128), nullable=False)
-
     # What school being rated
     school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)
 
@@ -46,11 +41,6 @@ class School_Rating(BaseModel, Base):
 class Instructor_Rating(BaseModel, Base):
     """Representation of a Rating for instructors"""
     __tablename__ = 'instructor_ratings'
-
-    # overall need to be average of all other ratings figured out on instance
-    # creation. Make a method to caluculate and called on initialization.
-    # Also should be a float?
-    # overall = Column(Integer, nullable=False)
 
     # What instructor is being rated
     instructor_id = Column(String(60),
