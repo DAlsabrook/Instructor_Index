@@ -5,7 +5,7 @@ Contains the class Rating
 
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Text, Integer, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class School_Rating(BaseModel, Base):
@@ -17,7 +17,8 @@ class School_Rating(BaseModel, Base):
     # overall need to be average of all other ratings figured out on instance
     # creation. Make a method to caluculate and called on initialization.
     # Also should be a float?
-    overall = Column(String(128), nullable=False)
+    # overall = Column(String(128), nullable=False)
+
     # What school being rated
     school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)
 
@@ -35,6 +36,12 @@ class School_Rating(BaseModel, Base):
         # Get a UUID as primary key
         super().__init__(*args, **kwargs)
 
+    @property
+    def overall(self):
+        ratings = [self.facilities, self.parking, self.internet,
+                   self.social, self.happiness]
+        return round(sum(ratings) / len(ratings), 1)
+
 
 class Instructor_Rating(BaseModel, Base):
     """Representation of a Rating for instructors"""
@@ -43,7 +50,8 @@ class Instructor_Rating(BaseModel, Base):
     # overall need to be average of all other ratings figured out on instance
     # creation. Make a method to caluculate and called on initialization.
     # Also should be a float?
-    overall = Column(Integer, nullable=False)
+    # overall = Column(Integer, nullable=False)
+
     # What instructor is being rated
     instructor_id = Column(String(60),
                            ForeignKey('instructors.id'), nullable=False)
@@ -52,7 +60,7 @@ class Instructor_Rating(BaseModel, Base):
     review = Column(Text, nullable=False)
     # Rating categories given by user from 1-5
     difficulty = Column(Integer, nullable=False)
-    approchability = Column(Integer, nullable=False)
+    approachability = Column(Integer, nullable=False)
     availability = Column(Integer, nullable=False)
     helpfulness = Column(Integer, nullable=False)
 
@@ -60,3 +68,9 @@ class Instructor_Rating(BaseModel, Base):
         """initializes city"""
         # Get a UUID as primary key
         super().__init__(*args, **kwargs)
+
+    @property
+    def overall(self):
+        ratings = [self.difficulty, self.approachability,
+                   self.availability, self.helpfulness]
+        return round(sum(ratings) / len(ratings), 1)

@@ -26,3 +26,10 @@ class Instructor(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes city"""
         super().__init__(*args, **kwargs)
+
+    @property
+    def overall(self):
+        if self.ratings:
+            return round(sum(rating.overall
+                       for rating in self.ratings) / len(self.ratings), 1)
+        return 0
