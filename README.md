@@ -12,3 +12,6 @@ mysql database
 sqlalchemy
 flask dynamic data (use atlas-AirBnb_clone_v3 web_flask directory)
 flask api (use atlas-AirBnb_clone_v3 api directory)
+jquery
+html
+css
