@@ -2,32 +2,45 @@
     padding-top: 150px;
 }
 
-input[id="sign_up_bars"] {
-    border: 1px solid black;
-    text-align: center;
-    border-radius: 50px;
-    height: 40px;
-    width: 300px;
-}
-
-input[id="sign_up_bars"]::placeholder {
-    text-align: center;
-}
-
-input[id="sign_up_bars"]:focus::placeholder {
-    color: transparent;
-}
-
-.sign_up_box {
+.login_section_box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-form[action="/signup"][method="post"] div{
+form[action="/login"][method="post"] {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 30px;
+}
+
+input[id="username"]::placeholder,
+input[id="password"]::placeholder {
+    text-align: center;
+}
+
+input[id="username"]:focus::placeholder,
+input[id="password"]:focus::placeholder {
+    color: transparent;
+}
+
+input[id='username'],
+input[id='password'] {
+    width: 200px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid grey;
+    margin: 10px;
+    text-align: center;
+}
+
+.sign_up {
+    width: 150px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
 }

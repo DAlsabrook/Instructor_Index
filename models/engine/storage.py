@@ -37,6 +37,18 @@ class DBStorage:
                     new_dict[key] = obj
         return (new_dict)
 
+    def user(self, username, password):
+        """Method to retrive a user from the databas"""
+        User = DBStorage.User
+        if username and password:
+            user = self.__session.query(User).filter(
+                User.username == username,
+                User.password == password
+            ).first()
+            return user
+        else:
+            return
+
     def get(self, cls, id):
         """Get on object based on its class and id"""
         # Check if class is a valid class

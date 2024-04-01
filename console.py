@@ -108,6 +108,22 @@ class HBNBCommand(cmd.Cmd):
         print(", ".join(obj_list), end="")
         print("]")
 
+    def do_user(self, arg):
+        """Gets one specific user from the database via username and password"""
+        from models import storage
+        args = shlex.split(arg)
+        if len(args) == 0:
+            print("** Username missing **")
+            return False
+        elif len(args) < 2:
+            print("** Password missing **")
+            return False
+        user = storage.user(args[0], args[1])
+        if user:
+            print(user)
+        else:
+            print("No user with those credentials")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

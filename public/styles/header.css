@@ -21,8 +21,8 @@
 
 #nav-schools {
     border: none;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     font-weight: 600;
     padding: 10px;
     border-radius: 20px;
@@ -32,8 +32,8 @@
 
 #nav-instructors {
     border: none;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     font-weight: 600;
     padding: 10px;
     border-radius: 20px;
