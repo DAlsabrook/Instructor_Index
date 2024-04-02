@@ -37,7 +37,7 @@ input[id='password'] {
     text-align: center;
 }
 
-.sign_up {
+.login_section_signup {
     width: 150px;
     height: 30px;
     background-color: black;

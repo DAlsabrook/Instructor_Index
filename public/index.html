@@ -7,13 +7,13 @@
     <title>Instructor[Index]</title>
     <meta name="description" content="Rate your instructors">
     <!-- tab image\/ -->
-    <link rel="icon" href="images/icon.png" style="border-radius: 30px;">
+    <link rel="icon" href="/static/images/icon.png" style="border-radius: 30px;">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
     <!-- CSS style sheets -->
-    <link rel="stylesheet" href="styles/index_header.css">
-    <link rel="stylesheet" href="styles/body.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/index_main.css">
+    <link rel="stylesheet" href="/static/styles/index_header.css">
+    <link rel="stylesheet" href="/static/styles/body.css">
+    <link rel="stylesheet" href="/static/styles/footer.css">
+    <link rel="stylesheet" href="/static/styles/index_main.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -29,7 +29,18 @@
             </div>
                 <!-- Navigation bar fixed to top -->
             <div class="nav_links button">
-                <button id="nav-link-log-in">Log in</button>
+                {% if current_user.is_authenticated %}
+                <div class="dropdown">
+                    <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
+                    <div class="dropdown-content">
+                        <a href="/profile">Profile</a>
+                        <a href="/settings">Settings</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+                {% else %}
+                <button id="nav-link-log-in">Login</button>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -56,22 +67,30 @@
         </section>
 
         <!-- Section for sign ups -->
+
         <section class="sign_up_section">
+            {% if not current_user.is_authenticated %}
             <div class="sign_up_title">
                 <h1>Join the Index Family</h1>
                 <h2>Love Instructor Index? Let's make it official.</h2>
             </div>
             <div class="sign_up_content">
                 <div class="content_box">
-                    <img src="./images/vote.png" alt="Thumbs_up-Thumbs_down">
+                    <img src="./static/images/vote.png" alt="Thumbs_up-Thumbs_down">
                     <h2>Vote on instructors</h2>
                 </div>
                 <div class="content_box">
-                    <img src="./images/anon.png" alt="Anonymous">
+                    <img src="./static/images/anon.png" alt="Anonymous">
                     <h2>Your ratings are always anonymous</h2>
                 </div>
             </div>
             <button id="sign_up">Sign up now!</button>
+            {% else %}
+                <div>
+                    <h1>Thank you for being a part of the family!</h1>
+                    <h3>Help by recommending us to your friends</h3>
+                </div>
+            {% endif %}
         </section>
     </main>
 
@@ -93,13 +112,13 @@
         </section>
         <section class="footer-copyright">
             <a href="#">
-                <img src="images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
+                <img src="/static/images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
             </a>
             <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
         </section>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="./static/javascript/app.js"></script>
 </body>
 
 </html>

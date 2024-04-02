@@ -2,23 +2,23 @@ $(document).ready(() => {
     // SHARED
     // NAVIGATE to log-in.html
     $('#nav-link-log-in').on('click', () => {
-        window.location.href = './log-in.html';
+        window.location.href = '/login';
     });
     // NAVIGATE to homepage
     $('#nav-home').on('click', () => {
-        window.location.href = './index.html';
+        window.location.href = '/';
     });
     // NAVIGATE to schools.html
     $('#nav-schools').on('click', () => {
-        window.location.href = './school.html';
+        window.location.href = '/schools';
     });
     // NAVIGATE to instructor.html
     $('#nav-instructors').on('click', () => {
-        window.location.href = './instructor.html';
+        window.location.href = '/instructors';
     });
     // NAVIGATE to new-account.html
     $('#sign_up').on('click', () => {
-        window.location.href = './new-account.html';
+        window.location.href = '/signup';
     });
     // All buttons change to pointer hand on hover
     $('button').mouseenter(function() {

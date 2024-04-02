@@ -7,17 +7,16 @@
     <title>Instructor[Index]</title>
     <meta name="description" content="Rate your instructors">
     <!-- tab image\/ -->
-    <link rel="icon" href="images/icon.png" style="border-radius: 30px;">
+    <link rel="icon" href="/static/images/icon.png" style="border-radius: 30px;">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
     <!-- CSS style sheets -->
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/body.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/new-account.css">
+    <link rel="stylesheet" href="/static/styles/header.css">
+    <link rel="stylesheet" href="/static/styles/body.css">
+    <link rel="stylesheet" href="/static/styles/footer.css">
+    <link rel="stylesheet" href="/static/styles/log-in.css">
     <!-- Font awesome for little logos and icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body class="body">
     <header class="header">
         <div class="nav_bar">
@@ -26,23 +25,34 @@
                 <button id="nav-schools">[Schools]</button>
                 <button id="nav-instructors">[Instructors]</button>
             </div>
+            <!-- Navigation bar fixed to top -->
             <div class="nav_links">
-                <button id="nav-link-log-in">Log in</button>
+                {% if current_user.is_authenticated %}
+                <div class="dropdown">
+                    <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
+                    <div class="dropdown-content">
+                        <a href="/profile">Profile</a>
+                        <a href="/settings">Settings</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+                {% else %}
+                <button id="nav-link-log-in">Login</button>
+                {% endif %}
             </div>
         </div>
     </header>
 
 
     <main class="main">
-        <section class="new_acc_section">
-            <div class="new_acc_box">
+        <section class="login_section">
+            <div class="login_section_box">
                 <form action="/login" method="post">
-                    <input type="first_name" id="first_name" name="first_name" placeholder="First name" required>
-                    <input type="last_name" id="last_name" name="last_name" placeholder="Last name" required>
                     <input type="username" id="username" name="username" placeholder="Username" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <button type="submit">Submit</button>
                 </form>
+                <button class="login_section_signup">Create new account</button>
             </div>
         </section>
     </main>
@@ -64,13 +74,13 @@
         </section>
         <section class="footer-copyright">
             <a href="#">
-                <img src="images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
+                <img src="/static/images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
             </a>
             <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
         </section>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="./static/javascript/app.js"></script>
 </body>
 
 </html>

@@ -82,9 +82,7 @@ class HBNBCommand(cmd.Cmd):
                     if k == key:
                         storage.delete(obj)
                         storage.save()
-                        print("Deleted")
-                    else:
-                        print("** no instance found **")
+                        print("Found and deleted")
             else:
                 print("** instance id missing **")
         else:

@@ -4,10 +4,10 @@ Contains the class User
 """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
-from sqlalchemy.orm import relationship
+from flask_login import UserMixin
 
 
-class User(BaseModel, Base):
+class User(BaseModel, Base, UserMixin):
     """Representation of a User"""
     __tablename__ = 'users'
     first_name = Column(String(128), nullable=False)
@@ -20,5 +20,10 @@ class User(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes city"""
         super().__init__(*args, **kwargs)
+
+    @staticmethod
+    def get(user_id):
+        from models import storage
+        return storage.get(User, user_id)
 
 # create User first_name="" last_name="" username="" password=""
