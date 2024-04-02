@@ -1,13 +1,11 @@
 """
 module used for user log in
 """
-from flask import Flask, request, redirect, url_for, render_template
+from flask import request, render_template
 from models import storage
+from api.views import app_views
 
-
-app = Flask(__name__)
-
-@app.route('/login', methods=['GET', 'POST'])
+@app_views.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         input_username = request.form['username']
@@ -19,6 +17,3 @@ def login():
             return 'Login Failed'
     else:
         return render_template('log-in.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)

@@ -3,7 +3,7 @@ module used for user log in
 """
 from flask import Flask, jsonify
 from models import storage
-from api.views import app_views
+from flask_app.api.views import app_views
 
 
 app = Flask(__name__)
