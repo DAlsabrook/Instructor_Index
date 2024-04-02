@@ -32,12 +32,23 @@
                         <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
                         <div class="dropdown-content">
                             <a href="/profile">Profile</a>
-                            <a href="/settings">Settings</a>
                             <a href="/logout">Logout</a>
                         </div>
                     </div>
                     {% else %}
-                    <button id="nav-link-log-in">Login</button>
+                    <div class="dropdown">
+                        <button class="dropbtn">Login</button>
+                        <div class="dropdown-content-login">
+                            <form action="/login" method="post">
+                                <input type="username" id="username" name="username" placeholder="Username" required>
+                                <input type="password" id="password" name="password" placeholder="Password" required>
+                                <div>
+                                    <button type="submit">Submit</button>
+                                    <button type="button" onclick="window.location.href='/signup';">Sign Up</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
             </div>
