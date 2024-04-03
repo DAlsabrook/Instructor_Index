@@ -1,125 +1,156 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Instructor[Index]</title>
-    <meta name="description" content="Rate your instructors">
-    <!-- tab image\/ -->
-    <link rel="icon" href="/static/images/icon.png" style="border-radius: 30px;">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
-    <!-- CSS style sheets -->
-    <link rel="stylesheet" href="/static/styles/header.css">
-    <link rel="stylesheet" href="/static/styles/body.css">
-    <link rel="stylesheet" href="/static/styles/footer.css">
-    <!-- Font awesome for little logos and icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>Instructor[Index]</title>
+        <meta name="description" content="Rate your instructors">
+        <!-- tab image\/ -->
+        <link rel="icon" href="/static/images/icon.png" style="border-radius: 30px;">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
+        <!-- CSS style sheets -->
+        <link rel="stylesheet" href="/static/styles/header.css">
+        <link rel="stylesheet" href="/static/styles/body.css">
+        <link rel="stylesheet" href="/static/styles/footer.css">
+        <link rel="stylesheet" href="/static/styles/school_main.css">
+        <!-- Font awesome for little logos and icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
 
-<body class="body">
-    <header class="header">
-        <div class="nav_bar">
-            <div class="nav_logo">
-                <button id="nav-home">I[i]</button>
-                <button id="nav-schools">[Schools]</button>
-                <button id="nav-instructors">[Instructors]</button>
-            </div>
-            <!-- Navigation bar fixed to top -->
-            <div class="nav_links">
-                {% if current_user.is_authenticated %}
-                <div class="dropdown">
-                    <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
-                    <div class="dropdown-content">
-                        <a href="/profile">Profile</a>
-                        <a href="/logout">Logout</a>
-                    </div>
+    <body class="body">
+        <header class="header">
+            <div class="nav_bar">
+                <div class="nav_logo">
+                    <button id="nav-home">I[i]</button>
+                    <button id="nav-schools">[Schools]</button>
+                    <button id="nav-instructors">[Instructors]</button>
                 </div>
-                {% else %}
-                <div class="dropdown">
-                    <button class="dropbtn">Login</button>
-                    <div class="dropdown-content-login">
-                        <form action="/login" method="post">
-                            <input type="username" id="username" name="username" placeholder="Username" required>
-                            <input type="password" id="password" name="password" placeholder="Password" required>
-                            <div>
-                                <button type="submit">Submit</button>
-                                <button type="button" onclick="window.location.href='/signup';">Sign Up</button>
+                <!-- Navigation bar fixed to top -->
+                <div class="nav_links">
+                    {% if current_user.is_authenticated %}
+                    <div class="dropdown">
+                        <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
+                        <div class="dropdown-content">
+                            <a href="/profile">Profile</a>
+                            <a href="/logout">Logout</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="dropdown">
+                        <button class="dropbtn">Login</button>
+                        <div class="dropdown-content-login">
+                            <form action="/login" method="post">
+                                <input type="username" id="username" name="username" placeholder="Username" required>
+                                <input type="password" id="password" name="password" placeholder="Password" required>
+                                <div>
+                                    <button type="submit">Submit</button>
+                                    <button type="button" onclick="window.location.href='/signup';">Sign Up</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <!-- Main body for the home page -->
+        <main class="main">
+            <!-- Top of page school info fixed -->
+            <section class="hero_section">
+                <h2>Tulsa, OK</h2>
+            </section>
+
+            <!-- Rating box for the school average of individual ratings -->
+            <section class="school_ratings_section">
+                {% for school in schools.values() | sort(attribute='name') %}
+                <div class="scale_container">
+                    <div class="school_container">
+                        <div class="front">
+                            <div class="content_wrapper">
+                                <div class="school_name">
+                                    <h1>{{ school.name }}</h1>
+                                </div>
+                                <div class="school_info_container">
+                                    <div class="school_info_rating">
+                                        <h3>Overall: {{ school.overall }}</h3>
+                                    </div>
+                                    <div class="school_info_rating">
+                                        <div class="left_content">
+                                            <img src="{{ url_for('static', filename='images/happiness.bf5f7bd2.svg') }}" alt="happiness">
+                                            <h3>Happiness</h3>
+                                        </div>
+                                        <h3>{{ school.happiness_avg }}</h3>
+                                    </div>
+                                    <div class="school_info_rating">
+                                        <div class="left_content">
+                                            <img src="{{ url_for('static', filename='images/facilities.1d6eadf9.svg') }}" alt="Facilities">
+                                            <h3>Facilities</h3>
+                                        </div>
+                                        <h3>{{ school.facilities_avg }}</h3>
+                                    </div>
+                                    <div class="school_info_rating">
+                                        <div class="left_content">
+                                            <img src="{{ url_for('static', filename='images/internet.30b903c3.svg') }}" alt="internet">
+                                            <h3>Internet</h3>
+                                        </div>
+                                        <h3>{{ school.internet_avg }}</h3>
+                                    </div>
+                                    <div class="school_info_rating">
+                                        <div class="left_content">
+                                            <img src="{{ url_for('static', filename='images/parking.jpeg') }}" alt="parking">
+                                            <h3>Parking</h3>
+                                        </div>
+                                        <h3>{{ school.parking_avg }}</h3>
+                                    </div>
+                                    <div class="school_info_rating">
+                                        <div class="left_content">
+                                            <img src="{{ url_for('static', filename='images/social.b8bb4cf6.svg') }}" alt="social">
+                                            <h3>Social</h3>
+                                        </div>
+                                        <h3>{{ school.social_avg }}</h3>
+                                    </div>
+                                    <button class="flipButton">Rate this school</button>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="back">
+                            <div class="content_wrapper">
+                                <h1>Welcome to the back</h1>
+                                <button class="flipButton">Rate this school</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {% endif %}
-            </div>
-        </div>
-    </header>
-
-    <!-- Main body for the home page -->
-    <main class="main">
-        <!-- Top of page school info fixed -->
-        <section class="hero_section">
-            <h2>Tulsa, OK</h2>
-            <h1>Atlas School</h1>
-            <h3>View all Instructors</h3>
-            <button>Rate this school</button>
-        </section>
-
-        <!-- Rating box for the school average of individual ratings -->
-        <section class="school_ratings_section">
-            <div class="overall">
-                <div class="overall_average">
-                    <h1>4.8</h1>
-                    <h4>Overall Rating</h4>
-                </div>
-                <div class="overall_ratings">
-                    <div class="rating">
-                        <h4>Happiness</h4>
-                        <div class="rating_score">4.7</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Rating box made by individuals about the school -->
-        <section class="individual_ratings_section">
-            <div class="individual">
-                <div class="individual_average">
-                    <h1>4.8</h1>
-                    <h4>Overall Rating</h4>
-                </div>
-                <div class="individual_ratings">
-                    <div class="rating">
-                        <h4>Happiness</h4>
-                        <div class="rating_score">4.7</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-<footer class="footer">
-    <section class="footer-links">
-        <button>Help</button>
-        <button>About</button>
-        <button>Contact us</button>
-        <button>Career</button>
-    </section>
-    <section class="footer-socials">
-        <button class="hero_button">
-            <a href="https://www.linkedin.com/in/david-alsabrook/" class="fa fa-solid fa-linkedin fa-lg"></a>
-        </button>
-        <button class="hero_button">
-            <a href="https://github.com/DAlsabrook" class="fa fa-solid fa-github fa-lg"></a>
-        </button>
-    </section>
-    <section class="footer-copyright">
-        <a href="#">
-            <img src="/static/images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
-        </a>
-        <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
-    </section>
-</footer>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="/static/javascript/app.js"></script>
-</body>
+                {% endfor %}
+            </section>
+        </main>
+            <footer class="footer">
+                <section class="footer-links">
+                    <button>Help</button>
+                    <button>About</button>
+                    <button>Contact us</button>
+                    <button>Career</button>
+                </section>
+                <section class="footer-socials">
+                    <button class="hero_button">
+                        <a href="https://www.linkedin.com/in/david-alsabrook/" class="fa fa-solid fa-linkedin fa-lg"></a>
+                    </button>
+                    <button class="hero_button">
+                        <a href="https://github.com/DAlsabrook" class="fa fa-solid fa-github fa-lg"></a>
+                    </button>
+                </section>
+                <section class="footer-copyright">
+                    <a href="#">
+                        <img src="/static/images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
+                    </a>
+                    <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
+                </section>
+            </footer>
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="/static/javascript/app.js"></script>
+            <script type="text/javascript" src="/static/javascript/school.js"></script>
+    </body>
 
 </html>
