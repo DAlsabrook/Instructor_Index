@@ -2,10 +2,8 @@
 """
 Contains the class Rating
 """
-
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Text, Integer, ForeignKey
-from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class School_Rating(BaseModel, Base):
@@ -18,7 +16,7 @@ class School_Rating(BaseModel, Base):
     school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)
 
     # User given review
-    review = Column(Text, nullable=False)
+    review = Column(Text)
     # Rating categories given by user from 1-5
     facilities = Column(Integer, nullable=False)
     parking = Column(Integer, nullable=False)

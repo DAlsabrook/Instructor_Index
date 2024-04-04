@@ -117,13 +117,30 @@
                         </div>
                         <div class="back">
                             <div class="content_wrapper">
-                                <h1>Welcome to the back</h1>
                                 <div class="sliders_container">
+                                    <h1>Welcome to the back</h1>
                                     <div class="sliders">
-                                        <!-- <form action=""></form> -->
-                                        <input type="range" min="0" max="5" value="50" class="slider" id="myRange">
-                                        <input type="range" min="0" max="5" value="50" class="slider" id="myRange">
-                                        <input type="range" min="0" max="5" value="50" class="slider" id="myRange">
+                                        <div>
+                                            <label for="slider_happiness">Happiness: <span id="slider_happiness_value">2</span></label>
+                                            <input type="range" min="0" max="5" value="2" class="slider" id="slider_happiness">
+                                        </div>
+                                        <div>
+                                            <label for="slider_facilities">Facilities: <span id="slider_facilities_value">2</span></label>
+                                            <input type="range" min="0" max="5" value="2" class="slider" id="slider_facilities">
+                                        </div>
+                                        <div>
+                                            <label for="slider_internet">Internet: <span id="slider_internet_value">2</span></label>
+                                            <input type="range" min="0" max="5" value="2" class="slider" id="slider_internet">
+                                        </div>
+                                        <div>
+                                            <label for="slider_parking">Parking: <span id="slider_parking_value">2</span></label>
+                                            <input type="range" min="0" max="5" value="2" class="slider" id="slider_parking">
+                                        </div>
+                                        <div>
+                                            <label for="slider_social">Social: <span id="slider_social_value">2</span></label>
+                                            <input type="range" min="0" max="5" value="2" class="slider" id="slider_social">
+                                        </div>
+                                        <button id="slider_submit">Rate</button>
                                     </div>
                                     <button class="flipButton">Back to the front</button>
                                 </div>

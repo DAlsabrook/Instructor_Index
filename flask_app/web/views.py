@@ -1,7 +1,7 @@
 """
 module used for all views to serve html pages
 """
-from flask import request, redirect, render_template
+from flask import request, redirect, render_template, jsonify
 from flask_login import login_user, logout_user, login_required
 from models import storage
 from models.school import School
@@ -13,18 +13,16 @@ def home():
     return render_template('index.html')
 
 
-@web_views.route('/login', methods=['GET', 'POST'])
+@web_views.route('/login', methods=['POST'])
 def login():
-    if request.method == "POST":
-        input_username = request.form['username']
-        input_password = request.form['password']
-        user = storage.user(input_username, input_password)
-        if user:
-            login_user(user)
-            return redirect(request.referrer)
-        else:
-            return 'Login Failed'
-    return render_template('login.html')
+    input_username = request.form['username']
+    input_password = request.form['password']
+    user = storage.user(input_username, input_password)
+    if user:
+        login_user(user)
+        return redirect(request.referrer)
+    else:
+        return 'Login Failed'
 
 
 @web_views.route('/logout')
@@ -87,3 +85,35 @@ def schools():
 @web_views.route('/instructors', strict_slashes=False)
 def instructors():
     return render_template('instructor.html')
+
+@web_views.route('/submit', methods = ['POST'])
+def submit():
+    # Get data sent from jquery click even
+    data = request.get_json()
+    # If submitting school rating
+    if data['school']:
+        from models.rating import School_Rating
+        schoolName = data['school']
+        facil = data['facilities']
+        park = data['parking']
+        inter = data['internet']
+        soci = data['social']
+        happ = data['happiness']
+        schoolId = [school.id for school in storage.all(School).values() if school.name == schoolName]
+
+            # Insert data into the database
+        new_rating = School_Rating(school_id=schoolId[0],
+                                   facilities=facil,
+                                   parking=park,
+                                   internet=inter,
+                                   social=soci,
+                                   happiness=happ)
+        new_rating.save()
+        if new_rating:
+            return jsonify({'status': 'Success', 'message': 'Rating submitted successfully.'})
+        else:
+            return jsonify({'status': 'Error', 'message': 'Rating failed'})
+    # If submitting instructor rating
+    elif data['instructor']:
+        from models.rating import Instructor_Rating
+        return jsonify({'status': 'Success', 'message': 'Rating submitted successfully.'})
