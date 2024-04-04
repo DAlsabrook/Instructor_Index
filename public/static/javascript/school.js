@@ -15,7 +15,7 @@ $(document).ready(() => {
         var flipper = $(this).closest('.scale_container').find('.school_container');
         flipper.toggleClass('flipped');
         var schoolName = flipper.find('.school_name h1').text();
-        flipper.find('.school_info_container .flipButton').removeClass('flipButton').addClass('noFlipButton').text('Thanks for rating');
+        flipper.find('.school_info_container .flipButton').removeClass('flipButton').addClass('noFlipButton').text('Already Rated!');
 
         var data = {
             school: schoolName,

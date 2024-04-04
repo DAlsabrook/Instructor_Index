@@ -21,18 +21,19 @@ $(document).ready(() => {
         window.location.href = '/signup';
     });
     // All buttons change to pointer hand on hover
-    $('button').mouseenter(function() {
-        $(this).css('cursor', 'pointer');
-        $(this).css('font-weight', '600')
-    }).mouseleave(function () {
-        $(this).css('cursor', '');
-        $(this).css('font-weight', '');
-    });
-    $('#nav-schools, #nav-instructors, #nav-link-log-in').mouseenter(function () {
-        $(this).css('background-color', 'white');
-        $(this).css('color', 'black');
-    }).mouseleave(function () {
-        $(this).css('background', '');
-        $(this).css('color', '');
+    $('button').hover(function () {
+        // On mouse enter
+        $(this).css({
+            'transform': 'scale(1.1)',
+            'transition': 'transform 0.7s ease',
+            'box-sizing': 'border-box'
+        });
+    }, function () {
+        // On mouse leave
+        $(this).css({
+            'transform': '',
+            'transition': '',
+            'box-sizing': ''
+        });
     });
 });

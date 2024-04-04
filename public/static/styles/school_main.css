@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     padding-bottom: 200px;
+    padding-top: 50px;
     overflow: scroll;
 }
 .school_ratings_section {
@@ -13,7 +14,7 @@
     align-items: center;
     flex-wrap: wrap;
     width: 95%;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
 .school_container {
@@ -29,6 +30,7 @@
     transition: 0.6s;
     transform-style: preserve-3d;
     position: relative;
+    background-color: rgb(255, 255, 255);
 }
 .scale_container {
     transition: transform 0.3s ease;
@@ -41,6 +43,9 @@
 .school_info_container {
     display: flex;
     flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    font-weight: 300;
 }
 
 .flipButton {
@@ -57,7 +62,7 @@
 }
 
 .noFlipButton {
-    border: 3px solid #04AA6D;;
+    border: 3px solid blueviolet;;
     border-radius: 50px;
     height: 30px;
     width: 60%;
@@ -69,9 +74,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(194, 203, 255);
     border-radius: 10px;
     min-height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.school_name::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 10px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgb(177, 126, 224), transparent);
 }
 
 .school_name h1 {
@@ -183,18 +199,18 @@
     height: 20px;
     border-radius: 50px;
     background: white;
-    border: 2px solid #04AA6D;
+    border: 2px solid blueviolet;
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #04AA6D;
+    width: 20px;
+    height: 20px;
+    background: blueviolet;
     cursor: pointer;
 }
 
 #slider_submit {
-    border: 2px solid #04AA6D;
+    border-radius: 50px;
     width: 30%;
 }

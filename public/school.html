@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="/static/styles/body.css">
         <link rel="stylesheet" href="/static/styles/footer.css">
         <link rel="stylesheet" href="/static/styles/school_main.css">
+        <link rel="stylesheet" href="/static/styles/shared.css">
         <!-- Font awesome for little logos and icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -21,16 +22,16 @@
     <body class="body">
         <header class="header">
             <div class="nav_bar">
+                <button class="bold_font" id="nav-home">Instructor<span>[index]</span></button>
                 <div class="nav_logo">
-                    <button id="nav-home">I[i]</button>
-                    <button id="nav-schools">[Schools]</button>
-                    <button id="nav-instructors">[Instructors]</button>
+                    <button class="purple_button bold_font" id="nav-schools">Schools</button>
+                    <button class="purple_button bold_font" id="nav-instructors">Instructors</button>
                 </div>
                 <!-- Navigation bar fixed to top -->
                 <div class="nav_links">
                     {% if current_user.is_authenticated %}
                     <div class="dropdown">
-                        <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
+                        <a class="dropbtn bold_font">{{ current_user.last_name }}<span>[{{ current_user.first_name }}]</span></a>
                         <div class="dropdown-content">
                             <a href="/profile">Profile</a>
                             <a href="/logout">Logout</a>
@@ -38,7 +39,7 @@
                     </div>
                     {% else %}
                     <div class="dropdown">
-                        <button class="dropbtn">Login</button>
+                        <button class="dropbtn bold_font">Login</button>
                         <div class="dropdown-content-login">
                             <form action="/login" method="post">
                                 <input type="username" id="username" name="username" placeholder="Username" required>
@@ -57,11 +58,7 @@
 
         <!-- Main body for the home page -->
         <main class="main">
-            <!-- Top of page school info fixed -->
-            <section class="hero_section">
-                <h2>Tulsa, OK</h2>
-            </section>
-
+            <h2>Tulsa, OK</h2>
             <!-- Rating box for the school average of individual ratings -->
             <section class="school_ratings_section">
                 {% for school in schools.values() | sort(attribute='name') %}
@@ -69,45 +66,45 @@
                     <div class="school_container">
                         <div class="front">
                             <div class="content_wrapper">
-                                <div class="school_name">
+                                <div class="school_name bold_font">
                                     <h1>{{ school.name }}</h1>
                                 </div>
                                 <div class="school_info_container">
                                     <div class="school_info_rating">
-                                        <h3>Overall: {{ school.overall }}</h3>
+                                        <h3 class="mid_font">Overall: {{ school.overall }}</h3>
                                     </div>
                                     <div class="school_info_rating">
                                         <div class="left_content">
                                             <img src="{{ url_for('static', filename='images/happiness.bf5f7bd2.svg') }}" alt="happiness">
-                                            <h3>Happiness</h3>
+                                            <h3 class="mid_font">Happiness</h3>
                                         </div>
                                         <h3>{{ school.happiness_avg }}</h3>
                                     </div>
                                     <div class="school_info_rating">
                                         <div class="left_content">
                                             <img src="{{ url_for('static', filename='images/facilities.1d6eadf9.svg') }}" alt="Facilities">
-                                            <h3>Facilities</h3>
+                                            <h3 class="mid_font">Facilities</h3>
                                         </div>
                                         <h3>{{ school.facilities_avg }}</h3>
                                     </div>
                                     <div class="school_info_rating">
                                         <div class="left_content">
                                             <img src="{{ url_for('static', filename='images/internet.30b903c3.svg') }}" alt="internet">
-                                            <h3>Internet</h3>
+                                            <h3 class="mid_font">Internet</h3>
                                         </div>
                                         <h3>{{ school.internet_avg }}</h3>
                                     </div>
                                     <div class="school_info_rating">
                                         <div class="left_content">
                                             <img src="{{ url_for('static', filename='images/parking.jpeg') }}" alt="parking">
-                                            <h3>Parking</h3>
+                                            <h3 class="mid_font">Parking</h3>
                                         </div>
                                         <h3>{{ school.parking_avg }}</h3>
                                     </div>
                                     <div class="school_info_rating">
                                         <div class="left_content">
                                             <img src="{{ url_for('static', filename='images/social.b8bb4cf6.svg') }}" alt="social">
-                                            <h3>Social</h3>
+                                            <h3 class="mid_font">Social</h3>
                                         </div>
                                         <h3>{{ school.social_avg }}</h3>
                                     </div>
@@ -140,7 +137,7 @@
                                             <label for="slider_social">Social: <span id="slider_social_value">2</span></label>
                                             <input type="range" min="0" max="5" value="2" class="slider" id="slider_social">
                                         </div>
-                                        <button id="slider_submit">Rate</button>
+                                        <button class="purple_button" id="slider_submit">Rate</button>
                                     </div>
                                     <button class="flipButton">Back to the front</button>
                                 </div>
@@ -152,26 +149,26 @@
             </section>
         </main>
             <footer class="footer">
-                <section class="footer-links">
-                    <button>Help</button>
-                    <button>About</button>
-                    <button>Contact us</button>
-                    <button>Career</button>
-                </section>
-                <section class="footer-socials">
-                    <button class="hero_button">
-                        <a href="https://www.linkedin.com/in/david-alsabrook/" class="fa fa-solid fa-linkedin fa-lg"></a>
-                    </button>
-                    <button class="hero_button">
-                        <a href="https://github.com/DAlsabrook" class="fa fa-solid fa-github fa-lg"></a>
-                    </button>
-                </section>
-                <section class="footer-copyright">
-                    <a href="#">
-                        <img src="/static/images/logo.png" alt="Ins-Ind-logo" width="150px" height="20px">
-                    </a>
-                    <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
-                </section>
+                <div class="footer_container">
+                    <section class="footer-links">
+                        <button class="bold_font">Help</button>
+                        <button class="bold_font">About</button>
+                        <button class="bold_font">Contact us</button>
+                        <button class="bold_font">Career</button>
+                    </section>
+                    <section class="footer-socials">
+                        <button class="purple_button">
+                            <a href="https://www.linkedin.com/in/david-alsabrook/" class="fa fa-solid fa-linkedin fa-lg"></a>
+                        </button>
+                        <button class="purple_button">
+                            <a href="https://github.com/DAlsabrook" class="fa fa-solid fa-github fa-lg"></a>
+                        </button>
+                    </section>
+                    <section class="footer-copyright">
+                        <button class="bold_font" id="footer_nav-home">Instructor<span>[index]</span></button>
+                        <h4><i class="fa fa-copyright"></i> Instructor Index, NotAnLLC. No Rights Reserved</h4>
+                    </section>
+                </div>
             </footer>
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script type="text/javascript" src="/static/javascript/app.js"></script>
