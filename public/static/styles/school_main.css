@@ -211,6 +211,7 @@
 }
 
 #slider_submit {
+    margin-top: 8px;
     border-radius: 50px;
     width: 30%;
 }
