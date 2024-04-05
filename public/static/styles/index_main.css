@@ -121,16 +121,14 @@ input {
 
 .content_box img {
     border-radius: 50px;
+    width: 400px;
+    height: 400px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .sign_up_section button {
-    border: 2px solid #fdf7d9;;
-    background-color: black;
-    color: white;
     align-items: center;
     height: 50px;
     width: 200px;
     border-radius: 50px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }

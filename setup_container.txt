@@ -8,13 +8,13 @@ Things to install in container-
     pip3 install flask_cors
     pip3 install flask-login
     pip3 install pycodestyle
-    apt-get install mariadb-server
-    service mariadb start
+
+Install mysql:
+    apt-get install mysql-server
+or if that doesnt work:
+    apt_get install mysql-server-8.0
+
+    service mysql start
 
 Or to start run:
     mysqld_safe &
-
-For error with mariadb connecting to mysql:
-    apt-get update
-    apt-get install libmariadb-dev-compat libmariadb-dev
-    pip install mysqlclient

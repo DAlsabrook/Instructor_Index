@@ -61,8 +61,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    color: white;
+    background-color: transparent;
+    color: black;
     font-size: x-large;
     padding: 10px;
     border-radius: 10px;
@@ -157,7 +157,9 @@ input[id='password'] {
 .dropdown:hover .dropdown-content-login {
     display: block;
 }
-.dropdown:hover .dropbtn {
-    background-color: transparent;
-    color: black;
+
+.dropdown:hover .dropbtn span {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
 }

@@ -32,7 +32,7 @@
             <div class="nav_links button">
                 {% if current_user.is_authenticated %}
                 <div class="dropdown">
-                    <a class="dropbtn">{{ current_user.last_name }}[{{ current_user.first_name }}]</a>
+                    <a class="dropbtn">{{ current_user.last_name }}<span>[{{ current_user.first_name }}]</span></a>
                     <div class="dropdown-content">
                         <a href="/profile">Profile</a>
                         <a href="/logout">Logout</a>
@@ -86,7 +86,7 @@
             </div>
             <div class="sign_up_content">
                 <div class="content_box">
-                    <img src="./static/images/vote.png" alt="Thumbs_up-Thumbs_down">
+                    <img src="./static/images/voting.png" alt="Thumbs_up-Thumbs_down">
                     <h2>Vote on instructors</h2>
                 </div>
                 <div class="content_box">
@@ -94,7 +94,7 @@
                     <h2>Your ratings are always anonymous</h2>
                 </div>
             </div>
-            <button id="sign_up">Sign up now!</button>
+            <button class="purple_button" id="sign_up">Sign up now!</button>
             {% else %}
                 <div>
                     <h1>Thank you for being a part of the family!</h1>

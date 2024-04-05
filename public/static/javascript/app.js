@@ -26,7 +26,8 @@ $(document).ready(() => {
         $(this).css({
             'transform': 'scale(1.1)',
             'transition': 'transform 0.7s ease',
-            'box-sizing': 'border-box'
+            'box-sizing': 'border-box',
+            'cursor': 'pointer'
         });
     }, function () {
         // On mouse leave
