@@ -59,9 +59,8 @@
         <!-- Main body for the home page -->
         <main class="main">
             <form id="schoolFilterForm">
-                <label for="schoolFilter">Filter schools:</label>
                 <select id="schoolFilter" name="schoolFilter">
-                    <option value="">Choose a state..</option>
+                    <option value="" disabled selected>Choose a state...</option>
                     {% for state in states %}
                     <option value="{{ state }}">{{ state }}</option>
                     {% endfor %}

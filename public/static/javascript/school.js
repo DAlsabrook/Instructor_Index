@@ -5,6 +5,20 @@ $(document).ready(() => {
         url: '/getschools',
         type: 'GET',
         success: function (schools) {
+            // Sort schools by name
+            schools.sort(function (a, b) {
+                var nameA = a.name.toUpperCase(); // Ignore case
+                var nameB = b.name.toUpperCase(); // Ignore case
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0; // Names are equal
+            });
+            
+            // Create a card for each school
             $.each(schools, function (index, school) {
                 // FRONT OF SCHOOL CARD
                 // Overall rating

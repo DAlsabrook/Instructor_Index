@@ -16,9 +16,50 @@
     width: 95%;
     max-height: 600px;
     overflow-y: auto;
-    padding-top: 50px;
+    padding-top: 65px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    background-color: rgb(247, 246, 246);
+    border-radius: 50px;
+    scrollbar-width: none;
+}
+/* Filter dropdown */
+
+#schoolFilterForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: -50px;
+    margin-left: -65%;
+    z-index: 11;
 }
 
+#schoolFilter {
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 30px;
+    font-size: large;
+    margin-right: 10px;
+    text-align: center;
+    color: gray;
+    background-color: rgb(247, 246, 246);
+}
+
+#schoolFilterButton {
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    height: 30px;
+    font-size: large;
+    background-color: #fdf7d9;
+    color: black
+}
+
+/* Frontside of school card */
 .school_container {
     display: flex;
     flex-direction: column;
@@ -233,7 +274,7 @@
     width: 30%;
 }
 
-/* School page section */
+/* School page popup section */
 .schoolPage {
     visibility: hidden;
     opacity: 0;
