@@ -59,6 +59,18 @@
         <!-- Main body for the home page -->
         <main class="main">
             <h2>Tulsa, OK</h2>
+            <div class="schoolPage">
+                <div class="schoolPageContent">
+                    <button class="closeButton">close</button>
+                    <div class="schoolPageUpper">
+                        <div class="schoolData"></div>
+                    </div>
+                    <div class="schoolPageLower">
+                        <div class="schoolPageLower_left"></div>
+                        <div class="schoolPageLower_right"></div>
+                    </div>
+                </div>
+            </div>
             <!-- Rating box for the school average of individual ratings -->
             <section class="school_ratings_section">
                 {% for school in schools.values() | sort(attribute='name') %}
@@ -108,14 +120,17 @@
                                         </div>
                                         <h3>{{ school.social_avg }}</h3>
                                     </div>
-                                    <button class="flipButton">Rate this school</button>
+                                    <div class="cardButtons">
+                                        <button class="flipButton">Flip to rate</button>
+                                        <button class="pageButton">School page</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="back">
                             <div class="content_wrapper">
                                 <div class="sliders_container">
-                                    <h1>Welcome to the back</h1>
+                                    <h1>Rate us!</h1>
                                     <div class="sliders">
                                         <div>
                                             <label for="slider_happiness">Happiness: <span id="slider_happiness_value">2</span></label>
@@ -139,7 +154,7 @@
                                         </div>
                                         <button class="purple_button" id="slider_submit">Rate</button>
                                     </div>
-                                    <button class="flipButton">Back to the front</button>
+                                    <button class="flipButton">Front</button>
                                 </div>
                             </div>
                         </div>

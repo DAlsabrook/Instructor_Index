@@ -29,7 +29,23 @@ def create_tables():
     tcc = School(name="Tulsa Community College")
     tcc.save()
 
-    schools = [atlas, ou, osu, tcc]
+    okccc = School(name="Oklahoma Community College")
+    okccc.save()
+
+    rogers = School(name="Rogers State University")
+    rogers.save()
+
+    central = School(name="University of Central Oklahoma")
+    central.save()
+
+    tu = School(name="The University of Tulsa")
+    tu.save()
+
+    southern = School(name="Southern Nazarene University")
+    southern.save()
+
+
+    schools = [atlas, ou, osu, tcc, okccc, rogers, central, tu, southern]
     first_names = [
         "Tim", "Olivia", "Ethan", "Sophia", "Mason", "Ava",
         "Charlotte", "Liam", "Isabella", "Noah", "Emma", "James",

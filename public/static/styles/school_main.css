@@ -14,7 +14,9 @@
     align-items: center;
     flex-wrap: wrap;
     width: 95%;
-    /* margin-bottom: 50px; */
+    max-height: 600px;
+    overflow-y: auto;
+    padding-top: 50px;
 }
 
 .school_container {
@@ -48,11 +50,24 @@
     font-weight: 300;
 }
 
+.cardButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.pageButton {
+    border-radius: 50px;
+    border: 2px solid blueviolet;
+    background-color: transparent;
+}
+
 .flipButton {
     border: 3px solid #fdf7d9;
     border-radius: 50px;
     height: 30px;
-    width: 60%;
+    width: 50%;
     background-color: transparent;
     margin: auto;
 }
@@ -78,6 +93,8 @@
     min-height: 100px;
     position: relative;
     overflow: hidden;
+    text-overflow: ellipsis;
+    width: 230px;
 }
 
 .school_name::after {
@@ -214,4 +231,67 @@
     margin-top: 8px;
     border-radius: 50px;
     width: 30%;
+}
+
+/* School page section */
+.schoolPage {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 100%;
+    left: 100%;
+    width: 0;
+    height: 0;
+    transition: transform 0.5s ease, visibility 0.5s ease, opacity 0.5s ease, width 0.5s ease, height 0.5s ease;
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.schoolPage.show {
+    visibility: visible;
+    opacity: 1;
+    width:80vw;
+    height: 80vh;
+    transform: translate(-110%, -110%);
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: grey;
+}
+.schoolPageContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.schoolPageUpper {
+    border-bottom: 2.5px solid rgb(233, 232, 232);
+    height: 50%;
+}
+
+.schoolPageLower {
+    border-top: 2.5px solid rgb(233, 232, 232);
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+}
+
+.schoolPageLower_left {
+    border-right: 2.5px solid rgb(233, 232, 232);
+    width: 50%;
+}
+
+.schoolPageLower_right {
+    border-left: 2.5px solid rgb(233, 232, 232);
+    width: 50%;
 }

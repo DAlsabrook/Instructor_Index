@@ -39,4 +39,31 @@ $(document).ready(() => {
             }
         });
     });
+    $(document).on('click', '.pageButton', function () {
+        var search = $(this).closest('.content_wrapper').find('.school_name');
+        var schoolName = search.find('h1').text();
+        // Make an AJAX request to get data from api. Send schoolName for api to use
+        $.ajax({
+            url: '/getSchoolData', // The URL of your server-side script
+            type: 'POST',
+            data: { schoolName: schoolName }, // Send the school name as data
+            success: function (school) {
+                var instructorsList = school.instructors;
+                var section = $(".schoolPage").find('.schoolData');
+                section.text(JSON.stringify(school.name));
+                for (var i = 0; i < instructorsList.length; i++) {
+                    var h3 = $('<h3></h3>').text(instructorsList[i].first_name);
+                    section.append(h3);
+                }
+            },
+            error: function (error) {
+                console.error('Error:', error);
+                $(".schoolPage").find('.schoolData').text(JSON.stringify(error.statusText));
+            }
+        });
+        $(".schoolPage").addClass('show');
+    });
+    $(document).on('click', '.closeButton', function () {
+        $(".schoolPage").removeClass('show');
+    });
 });
