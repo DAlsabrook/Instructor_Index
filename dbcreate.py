@@ -17,31 +17,31 @@ def create_tables():
     rating_per_instructor = 3
 
     # CREATE SCHOOLS
-    atlas = School(name="Atlas")
+    atlas = School(name="Atlas", state="Oklahoma")
     atlas.save()
 
-    ou = School(name="Oklahoma University")
+    ou = School(name="Oklahoma University", state="Oklahoma")
     ou.save()
 
-    osu = School(name="Oklahoma State University")
+    osu = School(name="Oklahoma State University", state="Oklahoma")
     osu.save()
 
-    tcc = School(name="Tulsa Community College")
+    tcc = School(name="Tulsa Community College", state="Oklahoma")
     tcc.save()
 
-    okccc = School(name="Oklahoma Community College")
+    okccc = School(name="Oklahoma Community College", state="Oklahoma")
     okccc.save()
 
-    rogers = School(name="Rogers State University")
+    rogers = School(name="Rogers State University", state="Oklahoma")
     rogers.save()
 
-    central = School(name="University of Central Oklahoma")
+    central = School(name="University of Central Oklahoma", state="Oklahoma")
     central.save()
 
-    tu = School(name="The University of Tulsa")
+    tu = School(name="The University of Tulsa", state="Oklahoma")
     tu.save()
 
-    southern = School(name="Southern Nazarene University")
+    southern = School(name="Southern Nazarene University", state="Oklahoma")
     southern.save()
 
 

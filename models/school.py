@@ -12,6 +12,7 @@ class School(BaseModel, Base):
     """Representation of a school"""
     __tablename__ = 'schools'
     name = Column(String(128), nullable=False)
+    state = Column(String(128), nullable=False)
     instructors = relationship("Instructor", backref="school")
     ratings = relationship("School_Rating", backref="school")
 
@@ -25,3 +26,9 @@ class School(BaseModel, Base):
             return round(sum(rating.overall
                        for rating in self.ratings) / len(self.ratings), 1)
         return 0
+
+    # Override to_dict method to include overall rating
+    def to_dict(self):
+        data = super().to_dict()
+        data['overall'] = self.overall
+        return data

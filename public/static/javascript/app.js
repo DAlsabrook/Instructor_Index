@@ -20,21 +20,24 @@ $(document).ready(() => {
     $('#sign_up').on('click', () => {
         window.location.href = '/signup';
     });
-    // All buttons change to pointer hand on hover
-    $('button').hover(function () {
-        // On mouse enter
-        $(this).css({
-            'transform': 'scale(1.1)',
-            'transition': 'transform 0.7s ease',
-            'box-sizing': 'border-box',
-            'cursor': 'pointer'
-        });
-    }, function () {
-        // On mouse leave
-        $(this).css({
-            'transform': '',
-            'transition': '',
-            'box-sizing': ''
-        });
-    });
+    // All buttons change to pointer hand and grow on hover
+    $(document).on({
+        mouseenter: function () {
+            // On mouse enter
+            $(this).css({
+                'transform': 'scale(1.1)',
+                'transition': 'transform 0.7s ease',
+                'box-sizing': 'border-box',
+                'cursor': 'pointer'
+            });
+        },
+        mouseleave: function () {
+            // On mouse leave
+            $(this).css({
+                'transform': '',
+                'transition': '',
+                'box-sizing': ''
+            });
+        }
+    }, 'button');
 });
