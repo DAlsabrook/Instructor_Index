@@ -17,7 +17,6 @@ $(document).ready(() => {
                 }
                 return 0; // Names are equal
             });
-            
             // Create a card for each school
             $.each(schools, function (index, school) {
                 // FRONT OF SCHOOL CARD
@@ -175,7 +174,7 @@ $(document).ready(() => {
         var schoolName = search.find('h1').text();
         // Make an AJAX request to get data from api. Send schoolName for api to use
         $.ajax({
-            url: '/getSchoolData', // The URL of your server-side script
+            url: '/getSchoolData', // The URL of server-side script
             type: 'POST',
             data: { schoolName: schoolName }, // Send the school name as data
             success: function (school) {

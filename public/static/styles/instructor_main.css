@@ -1,0 +1,348 @@
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 200px;
+    padding-top: 50px;
+    overflow: scroll;
+}
+
+.instructor_ratings_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 95%;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-top: 65px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    background-color: rgb(247, 246, 246);
+    border-radius: 50px;
+    scrollbar-width: none;
+}
+
+/* Filter dropdown */
+
+#instructorFilterForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: -50px;
+    margin-left: -65%;
+    z-index: 11;
+}
+
+#instructorFilter {
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 30px;
+    font-size: large;
+    margin-right: 10px;
+    text-align: center;
+    color: gray;
+    background-color: rgb(247, 246, 246);
+}
+
+#instructorFilterButton {
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
+    width: 100px;
+    height: 30px;
+    font-size: large;
+    background-color: #fdf7d9;
+    color: black
+}
+
+/* Frontside of instructor card */
+.instructor_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 225px;
+    min-height: 350px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+}
+
+.scale_container {
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+}
+
+.scale_container:hover {
+    transform: scale(1.05);
+}
+
+.instructor_info_container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+    font-size: small;
+    font-weight: 300;
+}
+
+.cardButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.pageButton {
+    border-radius: 50px;
+    border: 2px solid blueviolet;
+    background-color: transparent;
+}
+
+.flipButton {
+    border: 3px solid #fdf7d9;
+    border-radius: 50px;
+    height: 30px;
+    width: 50%;
+    background-color: transparent;
+    margin: auto;
+}
+
+.flipButton:hover {
+    background-color: #fdf7d9;
+}
+
+.noFlipButton {
+    border: 3px solid blueviolet;
+    ;
+    border-radius: 50px;
+    height: 30px;
+    width: 60%;
+    background-color: transparent;
+    margin: auto;
+}
+
+.instructor_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    min-height: 100px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 230px;
+}
+
+.instructor_name::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 10px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgb(177, 126, 224), transparent);
+}
+
+.instructor_name h1 {
+    text-align: center;
+}
+
+.instructor_info {
+    bottom: 0;
+}
+
+.instructor_info_rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    margin-bottom: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.left_content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left_content h3 {
+    margin-left: 5px;
+}
+
+.instructor_info_rating img {
+    height: 30px;
+    width: 30px;
+}
+
+/* gives padding to the card */
+.content_wrapper {
+    padding: 10px;
+    padding-bottom: 15px;
+}
+
+/* Flip manuever */
+.instructor_ratings_section {
+    perspective: 1000px;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.front {
+    /* Front content styling */
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.back {
+    /* Back content styling */
+    transform: rotateY(-180deg);
+}
+
+.instructor_container.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Back side of card \/ */
+/* Sliders for ratings on back of instructor cards */
+.sliders_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+.sliders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 65%;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 10px;
+    border-radius: 50px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: white;
+    border: 2px solid blueviolet;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: blueviolet;
+    cursor: pointer;
+}
+
+#slider_submit {
+    margin-top: 8px;
+    border-radius: 50px;
+    width: 30%;
+}
+
+/* instructor page popup section */
+.instructorPage {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 100%;
+    left: 100%;
+    width: 0;
+    height: 0;
+    transition: transform 0.5s ease, visibility 0.5s ease, opacity 0.5s ease, width 0.5s ease, height 0.5s ease;
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.instructorPage.show {
+    visibility: visible;
+    opacity: 1;
+    width: 80vw;
+    height: 80vh;
+    transform: translate(-110%, -110%);
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: grey;
+}
+
+.instructorPageContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.instructorPageUpper {
+    border-bottom: 2.5px solid rgb(233, 232, 232);
+    height: 50%;
+}
+
+.instructorPageLower {
+    border-top: 2.5px solid rgb(233, 232, 232);
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+}
+
+.instructorPageLower_left {
+    border-right: 2.5px solid rgb(233, 232, 232);
+    width: 50%;
+}
+
+.instructorPageLower_right {
+    border-left: 2.5px solid rgb(233, 232, 232);
+    width: 50%;
+}

@@ -57,6 +57,14 @@ def create_tables():
         "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson",
         "White", "Harris", "Martin", "Thompson"
     ]
+
+    names = []
+
+    for _ in range(100):
+        first_name = random.choice(first_names)
+        last_name = random.choice(last_names)
+        names.append(f"{first_name} {last_name}")
+
     school_text = ["This school is excellent in terms of facilities and student life.",
                    "School has it's positives and negatives but im about it",
                    "It is a school",
@@ -87,8 +95,7 @@ def create_tables():
         # Create instructors for each school
         for i in range(instructor_per_school):
             instructor = Instructor(
-                first_name=f"{random.choice(first_names)}",
-                last_name=f"{random.choice(last_names)}",
+                name=f"{random.choice(names)}",
                 school_id=school.id
             )
             instructor.save()

@@ -5,6 +5,7 @@ from flask import request, redirect, render_template, jsonify
 from flask_login import login_user, logout_user, login_required
 from models import storage
 from models.school import School
+from models.instructor import Instructor
 from . import web_views
 
 
@@ -38,12 +39,20 @@ def signup():
 
 @web_views.route('/schools', strict_slashes=False)
 def schools():
+    """Main schools page"""
+    # Get list of all states that have schools for filter dropdown
     states = sorted(list(set([school.state for school in storage.all(School).values()])))
     return render_template("school.html", states=states)
 
 @web_views.route('/instructors', strict_slashes=False)
 def instructors():
-    return render_template('instructor.html')
+    """Main instructors page"""
+    # Get list of all instructors
+    instructors = storage.all(Instructor).values()
+    # Find all schools from the instructors and sort them by name
+    schools_dict = {instructor.school_id: storage.get(School, instructor.school_id) for instructor in instructors}
+    schools = sorted(schools_dict.values(), key=lambda school: school.name)
+    return render_template('instructor.html', schools=schools)
 
 @web_views.route('/submit', methods = ['POST'])
 def submit():

@@ -17,8 +17,7 @@ class Instructor(BaseModel, Base):
         "atlas.id" being an instance of a school
     """
     __tablename__ = 'instructors'
-    first_name = Column(String(128), nullable=False)
-    last_name = Column(String(128), nullable=False)
+    name = Column(String(128), nullable=False)
     ratings = relationship("Instructor_Rating", backref="instructor")
     # What school they teach at
     school_id = Column(String(60), ForeignKey('schools.id'), nullable=False)

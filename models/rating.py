@@ -45,7 +45,7 @@ class Instructor_Rating(BaseModel, Base):
                            ForeignKey('instructors.id'), nullable=False)
 
     # User given reviews
-    review = Column(Text, nullable=False)
+    review = Column(Text)
     # Rating categories given by user from 1-5
     difficulty = Column(Integer, nullable=False)
     approachability = Column(Integer, nullable=False)
