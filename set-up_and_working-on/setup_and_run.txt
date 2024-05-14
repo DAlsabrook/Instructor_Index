@@ -14,7 +14,11 @@ Install mysql:
 or if that doesnt work:
     apt_get install mysql-server-8.0
 
-    service mysql start
 
-Or to start run:
-    mysqld_safe &
+How to start up site:
+        service mysql start
+    Or to start mariadb run:
+        mysqld_safe &
+
+    Run to start flask app:
+        python3 -m flask_app.app

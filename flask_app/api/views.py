@@ -98,4 +98,3 @@ def get_instructors():
         data.append(instructor_dict)
     print(f"Returning data from get_instructors")
     return jsonify(data)
-

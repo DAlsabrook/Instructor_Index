@@ -1,0 +1,17 @@
+Main Page:
+
+School Page:
+    -Create big pop-up "school page"
+
+Instructor Page:
+    -Search bar filters instructors from School
+    -Instructor cards display their ratings
+    -Create big pop-up "instructor page"
+    -Make sure when instructor is rated, it is being posted to the database and saved
+
+Footer:
+    -Create help, about, contact, and career pages
+
+All pages:
+    -Figure out how to store if a user has rated specific schools/instructors (possibly use relationship to user in schools/instructors table)
+    -Create a floating "to the top" button

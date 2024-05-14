@@ -1,0 +1,12 @@
+Just to clear and put in new data run the 2 files (to change data edit dbcreate.py):
+    python3 dbclear.py
+    python3 dbcreate.py
+
+To totally rebuild database (Changes to tables or rows):
+    mysql
+    DROP DATABASE index_db;
+    CREATE DATABASE IF NOT EXISTS index_db;
+    CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'admin';
+    GRANT ALL PRIVILEGES ON `index_db`.* TO 'admin'@'localhost';
+    GRANT SELECT ON `performance_schema`.* TO 'admin'@'localhost';
+    FLUSH PRIVILEGES;
