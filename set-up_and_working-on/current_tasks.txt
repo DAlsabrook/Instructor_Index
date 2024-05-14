@@ -1,13 +1,17 @@
 Main Page:
+    -Give search bar functionality
+    -Have search bar populate with schools from database / autofill with known school
 
 School Page:
     -Create big pop-up "school page"
+    -Search button sends a query variable through /schools route and needs to filter schools on page
 
 Instructor Page:
     -Search bar filters instructors from School
     -Instructor cards display their ratings
     -Create big pop-up "instructor page"
     -Make sure when instructor is rated, it is being posted to the database and saved
+    -Search button sends a query variable through /instructors route and needs to filter instructors on page
 
 Footer:
     -Create help, about, contact, and career pages

@@ -44,8 +44,33 @@ def create_tables():
     southern = School(name="Southern Nazarene University", state="Oklahoma")
     southern.save()
 
+    # Schools in Texas
+    ut = School(name="University of Texas at Austin", state="Texas")
+    ut.save()
 
-    schools = [atlas, ou, osu, tcc, okccc, rogers, central, tu, southern]
+    tam = School(name="Texas A&M University", state="Texas")
+    tam.save()
+
+    rice = School(name="Rice University", state="Texas")
+    rice.save()
+
+    smu = School(name="Southern Methodist University", state="Texas")
+    smu.save()
+
+    texasstate = School(name="Texas State University", state="Texas")
+    texasstate.save()
+
+    utd = School(name="University of Texas at Dallas", state="Texas")
+    utd.save()
+
+    tamucc = School(name="Texas A&M University-Corpus Christi", state="Texas")
+    tamucc.save()
+
+    uh = School(name="University of Houston", state="Texas")
+    uh.save()
+
+    schools = [atlas, ou, osu, tcc, okccc, rogers, central, tu, southern, ut, tam, rice, smu, texasstate, utd, tamucc, uh]
+
     first_names = [
         "Tim", "Olivia", "Ethan", "Sophia", "Mason", "Ava",
         "Charlotte", "Liam", "Isabella", "Noah", "Emma", "James",

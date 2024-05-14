@@ -56,7 +56,7 @@ def instructors():
 
 @web_views.route('/submit', methods = ['POST'])
 def submit():
-    # Get data sent from jquery click even
+    # Get data sent from jquery click event
     data = request.get_json()
     # If submitting school rating
     if data['school']:
