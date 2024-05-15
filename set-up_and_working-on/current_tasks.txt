@@ -16,6 +16,9 @@ Instructor Page:
 Footer:
     -Create help, about, contact, and career pages
 
+Sign-up page:
+    -make it possible to sign up for the site. Store info into database
+
 All pages:
     -Figure out how to store if a user has rated specific schools/instructors (possibly use relationship to user in schools/instructors table)
     -Create a floating "to the top" button

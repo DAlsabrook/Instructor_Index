@@ -22,3 +22,14 @@
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
 }
+
+#up_btn {
+    display: none;
+    font-size: 3rem;
+    z-index: 1000;
+    float: inline-end;
+    bottom: 5%;
+    right: 2.5%;
+    position: fixed;
+    color: rgb(132, 0, 255);
+}
