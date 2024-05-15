@@ -29,7 +29,7 @@ $(document).ready(() => {
     window.onscroll = function () { scrollFunction() };
 
     function scrollFunction() {
-        if (document.body.scrollTop > 160 || document.documentElement.scrollTop > 160) {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
             $('#up_btn').show();
         } else {
             $('#up_btn').hide();
