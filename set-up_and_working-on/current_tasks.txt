@@ -4,10 +4,10 @@ Main Page:
 
 School Page:
     -Create big pop-up "school page"
-    -Search button sends a query variable through /schools route and needs to filter schools on page
+    -Search button sends a query variable through /getschools route and needs to filter schools on page
 
 Instructor Page:
-    -Search bar filters instructors from School
+    -Search bar filters instructors from School (/getinstructors view send information to ajax to build page)
     -Instructor cards display their ratings
     -Create big pop-up "instructor page"
     -Make sure when instructor is rated, it is being posted to the database and saved
@@ -21,4 +21,3 @@ Sign-up page:
 
 All pages:
     -Figure out how to store if a user has rated specific schools/instructors (possibly use relationship to user in schools/instructors table)
-    -Create a floating "to the top" button

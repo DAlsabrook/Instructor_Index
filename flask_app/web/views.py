@@ -42,7 +42,8 @@ def schools():
     """Main schools page"""
     # Get list of all states that have schools for filter dropdown
     states = sorted(list(set([school.state for school in storage.all(School).values()])))
-    return render_template("school.html", states=states)
+    stateFilter = request.args.get('schoolFilter') #query parameter for filtering states
+    return render_template("school.html", states=states, stateFilter=stateFilter)
 
 @web_views.route('/instructors', strict_slashes=False)
 def instructors():
@@ -58,8 +59,9 @@ def instructors():
 def submit():
     # Get data sent from jquery click event
     data = request.get_json()
+    print(data)
     # If submitting school rating
-    if data['school']:
+    if 'school' in data.keys():
         from models.rating import School_Rating
         schoolName = data['school']
         facil = data['facilities']
@@ -82,6 +84,23 @@ def submit():
         else:
             return jsonify({'status': 'Error', 'message': 'Rating failed'})
     # If submitting instructor rating
-    elif data['instructor']:
+    elif 'instructor' in data.keys():
         from models.rating import Instructor_Rating
-        return jsonify({'status': 'Success', 'message': 'Rating submitted successfully.'})
+        print(f'Successfully in Instructor if statment in /submit. Data= {data}')
+        insName = data['instructor']
+        difficulty = data['difficulty']
+        approach = data['approachability']
+        avail = data['availability']
+        helpfulness = data['helpfulness']
+        insId = [instructor.id for instructor in storage.all(Instructor).values() if instructor.name == insName]
+
+        newRating = Instructor_Rating(instructor_id = insId[0],
+                                      difficulty = difficulty,
+                                      approachability = approach,
+                                      availability = avail,
+                                      helpfulness = helpfulness)
+        newRating.save()
+        if newRating:
+            return jsonify({'status': 'Success', 'message': 'Rating submitted successfully.'})
+        else:
+            return jsonify({'status': 'Error', 'message': 'Rating failed'})

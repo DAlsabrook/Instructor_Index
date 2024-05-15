@@ -6,7 +6,6 @@ $(document).ready(() => {
         url: '/getinstructors',
         type: 'GET',
         success: function (instructors) {
-            console.log('Success Instructors:', instructors);
             // Create a card for each instructor
             $.each(instructors, function (index, instructor) {
                 // FRONT OF instructor CARD
@@ -86,7 +85,6 @@ $(document).ready(() => {
 
     // Flip card logic
     $(document).on('click', '.flipButton', function () {
-        console.log('Flipping');
         //find the closest instructor container and flip it
         var flipper = $(this).closest('.scale_container').find('.instructor_container');
         flipper.toggleClass('flipped');
@@ -103,7 +101,6 @@ $(document).ready(() => {
 
     // Slider submit logic
     $(document).on('click', '#slider_submit', function () {
-        console.log('Slider sumbit clicked');
         var flipper = $(this).closest('.scale_container').find('.instructor_container');
         flipper.toggleClass('flipped');
         var instructorName = flipper.find('.instructor_name h1').text();

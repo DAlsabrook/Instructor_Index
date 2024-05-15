@@ -1,9 +1,12 @@
 $(document).ready(() => {
     console.log('document ready');
     // Get all schools from the database and build html for cards
+    // let stateFilter = "{{ stateFilter }}";
+    console.log(`Javascript stateFilter= ${stateFilter}`)
     $.ajax({
         url: '/getschools',
         type: 'GET',
+        data: { 'stateFilter': stateFilter},
         success: function (schools) {
             // Sort schools by name
             schools.sort(function (a, b) {

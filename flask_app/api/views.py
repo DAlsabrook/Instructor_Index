@@ -33,15 +33,15 @@ def get_school_data():
 def get_schools():
     """Get all schools or schools from a state and their ratings plus calculate averages"""
     schools = storage.all(School).values()
-    state = request.args.get('schoolFilter')
+    state = request.args.get('stateFilter')
     all_schools = schools
     # If a state is provided, filter the schools to only that state
-    if state:
+    if state != 'None':
         states_schools = {}
         for school in schools:
             if school.state == state:
                 states_schools[school.name] = school
-        schools = states_schools
+        schools = states_schools.values()
     if schools:
         # Calculate the average ratings for each schools ratings
         rating_types = ['facilities', 'happiness', 'internet', 'parking', 'social']
