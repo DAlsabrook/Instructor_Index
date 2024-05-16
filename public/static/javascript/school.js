@@ -1,5 +1,7 @@
 $(document).ready(() => {
     console.log('document ready');
+    // Get from the user what schools have been rated
+    const alreadyRated = localStorage.getItem("alreadyRated");
     // Get all schools from the database and build html for cards
     $.ajax({
         url: '/getschools',
@@ -146,6 +148,8 @@ $(document).ready(() => {
         flipper.toggleClass('flipped');
         var schoolName = flipper.find('.school_name h1').text();
         flipper.find('.school_info_container .flipButton').removeClass('flipButton').addClass('noFlipButton').text('Already Rated!');
+        // Need to set this var to also hold what specific cards have been rated. Maybe by school/instructor id
+        localStorage.setItem("alreadyRated", "true");
 
         var data = {
             school: schoolName,
