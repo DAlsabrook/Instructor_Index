@@ -34,7 +34,6 @@ def get_schools():
     """Get all schools or schools from a state and their ratings plus calculate averages"""
     schools = storage.all(School).values()
     state = request.args.get('stateFilter')
-    all_schools = schools
     # If a state is provided, filter the schools to only that state
     if state != 'None':
         states_schools = {}
@@ -83,10 +82,10 @@ def get_instructors():
     """
     print('inside get_instructors')
     instructors = storage.all(Instructor).values()
-    # If the ajax sent a school name to filter instructors. This is the "search" dropdown
-    schoolId = request.args.get('instructorFilter')
-    print(f"Request args schoolId: {schoolId}")
-    if schoolId:
+    schoolId = request.args.get('schoolId')
+    print(f'data from ajax: {schoolId}')
+    # If the ajax sent a school id to filter instructors. This is the "search" dropdown
+    if schoolId != 'None':
         # Get the school object from the name sent in query
         instructors = [instructor for instructor in instructors if instructor.school_id == schoolId]
         print(f"Found matching id {instructors}")
@@ -96,5 +95,4 @@ def get_instructors():
         instructor_dict = instructor.to_dict()
         instructor_dict['ratings'] = [rating.to_dict() for rating in instructor.ratings]
         data.append(instructor_dict)
-    print(f"Returning data from get_instructors")
     return jsonify(data)

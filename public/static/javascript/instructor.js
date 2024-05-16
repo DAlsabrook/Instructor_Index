@@ -5,6 +5,7 @@ $(document).ready(() => {
     $.ajax({ // This is not getting query parameter from /instructors
         url: '/getinstructors',
         type: 'GET',
+        data: { 'schoolId': schoolId },
         success: function (instructors) {
             // Create a card for each instructor
             $.each(instructors, function (index, instructor) {

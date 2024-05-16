@@ -53,7 +53,9 @@ def instructors():
     # Find all schools from the instructors and sort them by name
     schools_dict = {instructor.school_id: storage.get(School, instructor.school_id) for instructor in instructors}
     schools = sorted(schools_dict.values(), key=lambda school: school.name)
-    return render_template('instructor.html', schools=schools)
+    schoolId = request.args.get('instructorFilter') #query parameter for filtering instructors by school
+    print(f'Inside /school route data: {schoolId}')
+    return render_template('instructor.html', schools=schools, schoolId=schoolId)
 
 @web_views.route('/submit', methods = ['POST'])
 def submit():
