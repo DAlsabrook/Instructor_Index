@@ -55,5 +55,4 @@ $(document).ready(() => {
             });
         }
     }, 'button');
-    function window.
 });
