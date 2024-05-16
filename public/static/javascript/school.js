@@ -64,7 +64,13 @@ $(document).ready(() => {
 
                 // Front of the cards bottom buttons
                 var pageButton = $('<button></button>').addClass('pageButton').text('School Page');
-                var flipButton = $('<button></button>').addClass('flipButton').text('Flip to rate');
+                // Checking if user has already rated
+                if (localStorage.getItem(toString(school.name))) {
+                    var flipButton = $('<button></button>').addClass('noFlipButton').text('Already rated!');
+                } else {
+                    var flipButton = $('<button></button>').addClass('flipButton').text('Flip to rate');
+                }
+
                 var cardButtons = $('<div></div>').addClass('cardButtons').append(pageButton, flipButton);
 
                 // School name div
@@ -148,8 +154,8 @@ $(document).ready(() => {
         flipper.toggleClass('flipped');
         var schoolName = flipper.find('.school_name h1').text();
         flipper.find('.school_info_container .flipButton').removeClass('flipButton').addClass('noFlipButton').text('Already Rated!');
-        // Need to set this var to also hold what specific cards have been rated. Maybe by school/instructor id
-        localStorage.setItem("alreadyRated", "true");
+        // Store the {schoolName(string), true(string)} to use for validation when creating cards on document load
+        localStorage.setItem(schoolname, "true");
 
         var data = {
             school: schoolName,
