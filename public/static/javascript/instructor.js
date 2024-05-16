@@ -14,12 +14,33 @@ $(document).ready(() => {
                 var overallH3 = $('<h3></h3>').addClass('mid_font').text('Overall: ' + instructor.overall);
                 var overallRatingDiv = $('<div></div>').addClass('instructor_info_rating').append(overallH3);
 
-                // Happiness rating
-                // var happinessH3 = $('<h3></h3>').addClass('mid_font').text('Happiness');
-                // var happinessImg = $('<img>').attr('src', 'static/images/happiness.bf5f7bd2.svg');
-                // var happinessLeft_content = $('<div></div>').addClass('left_content').append(happinessImg, happinessH3);
-                // var happinessScore = $('<h3></h3>').text(instructor.happiness_avg);
-                // var happinessRatingDiv = $('<div></div>').addClass('instructor_info_rating').append(happinessLeft_content, happinessScore);
+                // difficulty rating
+                var difficultyH3 = $('<h3></h3>').addClass('mid_font').text('Difficulty');
+                var difficultyImg = $('<img>').attr('src', 'static/images/happiness.bf5f7bd2.svg');
+                var difficultyLeft_content = $('<div></div>').addClass('left_content').append(difficultyImg, difficultyH3);
+                var difficultyScore = $('<h3></h3>').text(instructor.difficulty_avg);
+                var difficultyRatingDiv = $('<div></div>').addClass('instructor_info_rating').append(difficultyLeft_content, difficultyScore);
+
+                // approachability rating
+                var approachabilityH3 = $('<h3></h3>').addClass('mid_font').text('Approachability');
+                var approachabilityImg = $('<img>').attr('src', 'static/images/social.b8bb4cf6.svg');
+                var approachabilityLeft_content = $('<div></div>').addClass('left_content').append(approachabilityImg, approachabilityH3);
+                var approachabilityScore = $('<h3></h3>').text(instructor.approachability_avg);
+                var approachabilityRatingDiv = $('<div></div>').addClass('instructor_info_rating').append(approachabilityLeft_content, approachabilityScore);
+
+                // availability rating
+                var availabilityH3 = $('<h3></h3>').addClass('mid_font').text('Availability');
+                var availabilityImg = $('<img>').attr('src', 'static/images/happiness.bf5f7bd2.svg');
+                var availabilityLeft_content = $('<div></div>').addClass('left_content').append(availabilityImg, availabilityH3);
+                var availabilityScore = $('<h3></h3>').text(instructor.availability_avg);
+                var availabilityRatingDiv = $('<div></div>').addClass('instructor_info_rating').append(availabilityLeft_content, availabilityScore);
+
+                // helpfulness rating
+                var helpfulnessH3 = $('<h3></h3>').addClass('mid_font').text('Helpfulness');
+                var helpfulnessImg = $('<img>').attr('src', 'static/images/happiness.bf5f7bd2.svg');
+                var helpfulnessLeft_content = $('<div></div>').addClass('left_content').append(helpfulnessImg, helpfulnessH3);
+                var helpfulnessScore = $('<h3></h3>').text(instructor.helpfulness_avg);
+                var helpfulnessRatingDiv = $('<div></div>').addClass('instructor_info_rating').append(helpfulnessLeft_content, helpfulnessScore);
 
                 // Front of the cards bottom buttons
                 var pageButton = $('<button></button>').addClass('pageButton').text('instructor Page');
@@ -30,8 +51,14 @@ $(document).ready(() => {
                 var instructorName = $('<h1></h1>').text(instructor.name);
                 var instructorNameDiv = $('<div></div>').addClass('instructor_name bold_font').append(instructorName);
 
-                // info container
-                var instructorInfoContainer = $('<div></div>').addClass('instructor_info_container').append(overallRatingDiv, cardButtons);
+                // info container append ratings to
+                var instructorInfoContainer = $('<div></div>').addClass('instructor_info_container').append(
+                    overallRatingDiv,
+                    difficultyRatingDiv,
+                    approachabilityRatingDiv,
+                    availabilityRatingDiv,
+                    helpfulnessRatingDiv,
+                    cardButtons);
 
                 // content wrapper
                 var contentWrapper = $('<div></div>').addClass('content_wrapper').append(instructorNameDiv, instructorInfoContainer);

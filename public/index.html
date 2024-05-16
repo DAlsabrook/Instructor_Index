@@ -65,7 +65,10 @@
             <section class="search_section">
                 <h1>Enter your school to get started</h1>
                 <form action="/search" method="GET">
-                    <input type="search" id="search" name="query" placeholder="School name">
+                    <input type="search" id="search" name="query" placeholder="Search Schools" list="school-list">
+                    <datalist id="school-list">
+                        <!-- Autocomplete options will be inserted here -->
+                    </datalist>
                 </form>
                 <div>
                     <h2>Visit:
@@ -130,6 +133,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./static/javascript/app.js"></script>
+    <script type="text/javascript" src="./static/javascript/index.js"></script>
 </body>
 
 </html>

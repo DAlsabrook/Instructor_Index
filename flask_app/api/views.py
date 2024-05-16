@@ -1,7 +1,7 @@
 """
 Module to contain all views for api information
 """
-from flask import jsonify, request
+from flask import jsonify, request, redirect, url_for
 from . import api_views
 from models import storage
 from models.school import School
@@ -28,17 +28,33 @@ def get_school_data():
             return jsonify(data)
     return jsonify({"statusText": "School not found in loop"}), 404
 
+@api_views.route('/searchschools')
+def search_schools():
+    '''Search bar to find out what schools exist while user types
+    returns the first school that contains the user input
+    '''
+    from collections import OrderedDict
+    userInput = request.args.get('userInput')
+    schools = storage.all(School)
+    ordered_schools = OrderedDict(sorted(schools.items(), key=lambda item: item[1].name))
+    data = []
+    for school in ordered_schools.values():
+        if userInput.lower() in school.name.lower():
+            print(school.name)
+            data.append(school.name)
+    return jsonify(data)
 
 @api_views.route('/getschools')
 def get_schools():
     """Get all schools or schools from a state and their ratings plus calculate averages"""
     schools = storage.all(School).values()
-    state = request.args.get('stateFilter')
-    # If a state is provided, filter the schools to only that state
-    if state != 'None':
+    query = request.args.get('stateFilter')
+    # If a query is provided, filter the schools
+    if query != 'None':
         states_schools = {}
         for school in schools:
-            if school.state == state:
+            # Checks if filter for school per state or if specific school
+            if school.state == query or school.name.lower() == query.lower():
                 states_schools[school.name] = school
         schools = states_schools.values()
     if schools:
@@ -80,19 +96,35 @@ def get_instructors():
     Used to get a list of all instructors and their
     ratings or instructors from a specific school
     """
-    print('inside get_instructors')
     instructors = storage.all(Instructor).values()
     schoolId = request.args.get('schoolId')
-    print(f'data from ajax: {schoolId}')
     # If the ajax sent a school id to filter instructors. This is the "search" dropdown
     if schoolId != 'None':
         # Get the school object from the name sent in query
         instructors = [instructor for instructor in instructors if instructor.school_id == schoolId]
-        print(f"Found matching id {instructors}")
     # Calculate the average ratings for each ratings
+    if instructors:
+        rating_types = ['difficulty', 'approachability', 'availability', 'helpfulness']
+
+        for instructor in instructors:
+            for rating_type in rating_types:
+                ratings = [getattr(rating, rating_type) for rating in instructor.ratings]
+                if ratings:
+                    avg = sum(ratings) / len(ratings)
+                else:
+                    avg = None
+                setattr(instructor, f'{rating_type}_avg', round(avg, 1) if avg else None)
     data = []
     for instructor in instructors:
         instructor_dict = instructor.to_dict()
         instructor_dict['ratings'] = [rating.to_dict() for rating in instructor.ratings]
         data.append(instructor_dict)
     return jsonify(data)
+
+@api_views.route('/search')
+def search():
+    '''
+    This route is for the search bar for index.html to search schools in the database
+    '''
+    school = request.args.get('query')
+    return redirect(url_for('web.schools', schoolFilter=school))

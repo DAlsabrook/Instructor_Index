@@ -32,3 +32,9 @@ class Instructor(BaseModel, Base):
             return round(sum(rating.overall
                        for rating in self.ratings) / len(self.ratings), 1)
         return 0
+
+    # Override to_dict method to include overall rating
+    def to_dict(self):
+        data = super().to_dict()
+        data['overall'] = self.overall
+        return data

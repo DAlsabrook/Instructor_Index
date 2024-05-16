@@ -54,14 +54,12 @@ def instructors():
     schools_dict = {instructor.school_id: storage.get(School, instructor.school_id) for instructor in instructors}
     schools = sorted(schools_dict.values(), key=lambda school: school.name)
     schoolId = request.args.get('instructorFilter') #query parameter for filtering instructors by school
-    print(f'Inside /school route data: {schoolId}')
     return render_template('instructor.html', schools=schools, schoolId=schoolId)
 
 @web_views.route('/submit', methods = ['POST'])
 def submit():
     # Get data sent from jquery click event
     data = request.get_json()
-    print(data)
     # If submitting school rating
     if 'school' in data.keys():
         from models.rating import School_Rating
@@ -88,7 +86,6 @@ def submit():
     # If submitting instructor rating
     elif 'instructor' in data.keys():
         from models.rating import Instructor_Rating
-        print(f'Successfully in Instructor if statment in /submit. Data= {data}')
         insName = data['instructor']
         difficulty = data['difficulty']
         approach = data['approachability']
